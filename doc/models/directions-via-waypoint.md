@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { DirectionsViaWaypoint } from 'google-maps-platformlib';
+import { DirectionsViaWaypoint } from 'googlemapsplatform';
 
 const directionsViaWaypoint: DirectionsViaWaypoint = {
   location: {

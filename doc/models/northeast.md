@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Northeast } from 'google-maps-platformlib';
+import { Northeast } from 'googlemapsplatform';
 
 const northeast: Northeast = {
   lat: 194.96,

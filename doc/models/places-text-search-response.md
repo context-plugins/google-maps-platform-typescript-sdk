@@ -26,7 +26,7 @@ import {
   BusinessStatus,
   PlacesSearchStatus,
   PlacesTextSearchResponse,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const placesTextSearchResponse: PlacesTextSearchResponse = {
   htmlAttributions: [

@@ -28,7 +28,7 @@
 ## Example
 
 ```ts
-import { DirectionsLeg, Maneuver, TravelMode } from 'google-maps-platformlib';
+import { DirectionsLeg, Maneuver, TravelMode } from 'googlemapsplatform';
 
 const directionsLeg: DirectionsLeg = {
   endAddress: 'end_address0',

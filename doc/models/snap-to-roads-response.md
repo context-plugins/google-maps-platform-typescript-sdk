@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { SnapToRoadsResponse } from 'google-maps-platformlib';
+import { SnapToRoadsResponse } from 'googlemapsplatform';
 
 const snapToRoadsResponse: SnapToRoadsResponse = {
   snappedPoints: [

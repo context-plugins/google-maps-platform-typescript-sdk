@@ -26,7 +26,7 @@ import {
   BusinessStatus,
   PlacesNearbySearchResponse,
   PlacesSearchStatus,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const placesNearbySearchResponse: PlacesNearbySearchResponse = {
   htmlAttributions: [

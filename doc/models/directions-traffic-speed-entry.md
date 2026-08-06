@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { DirectionsTrafficSpeedEntry } from 'google-maps-platformlib';
+import { DirectionsTrafficSpeedEntry } from 'googlemapsplatform';
 
 const directionsTrafficSpeedEntry: DirectionsTrafficSpeedEntry = {
   speedCategory: 'speed_category4',

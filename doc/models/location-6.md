@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Location6 } from 'google-maps-platformlib';
+import { Location6 } from 'googlemapsplatform';
 
 const location6: Location6 = {
   latitude: 248.24,

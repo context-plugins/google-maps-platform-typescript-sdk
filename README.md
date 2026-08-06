@@ -33,7 +33,7 @@ npm install
 
 - This will install all dependencies in the **node_modules** folder.
 
-![Resolve Dependencies](https://apidocs.io/illustration/typescript?workspaceFolder=GoogleMapsPlatform&workspaceName=google-maps-platformlib&step=resolveDependency)
+![Resolve Dependencies](https://apidocs.io/illustration/typescript?workspaceFolder=GoogleMapsPlatform&workspaceName=googlemapsplatform&step=resolveDependency)
 
 ## Installation
 
@@ -57,9 +57,9 @@ npm init --y
 
 ### 2. Add Dependencies to the Client Library
 
-- The created project manages its dependencies using its `package.json` file. In order to add a dependency on the *Google Maps PlatformLib* client library, double click on the `package.json` file in the bar on the left and add the dependency to the package in it.
+- The created project manages its dependencies using its `package.json` file. In order to add a dependency on the *GoogleMapsPlatform* client library, double click on the `package.json` file in the bar on the left and add the dependency to the package in it.
 
-![Add GoogleMapsPlatformlib Dependency](https://apidocs.io/illustration/typescript?workspaceFolder=GoogleMapsPlatform&workspaceName=google-maps-platformlib&step=importDependency)
+![Add Googlemapsplatform Dependency](https://apidocs.io/illustration/typescript?workspaceFolder=GoogleMapsPlatform&workspaceName=googlemapsplatform&step=importDependency)
 
 - To install the package in the project, run the following command in the terminal:
 
@@ -67,7 +67,7 @@ npm init --y
 npm install
 ```
 
-![Install GoogleMapsPlatformlib Dependency](https://apidocs.io/illustration/typescript?step=installDependency)
+![Install Googlemapsplatform Dependency](https://apidocs.io/illustration/typescript?step=installDependency)
 
 ## Initialize the API Client
 
@@ -89,7 +89,7 @@ The API client can be initialized as follows:
 ### Code-Based Client Initialization
 
 ```ts
-import { Client, Environment, LogLevel } from 'google-maps-platformlib';
+import { Client, Environment, LogLevel } from 'googlemapsplatform';
 
 const client = new Client({
   customQueryAuthenticationCredentials: {
@@ -114,7 +114,7 @@ const client = new Client({
 ```ts
 import * as path from 'path';
 import * as fs from 'fs';
-import { Client } from 'google-maps-platformlib';
+import { Client } from 'googlemapsplatform';
 
 // Provide absolute path for the configuration file
 const absolutePath = path.resolve('./config.json');
@@ -134,7 +134,7 @@ See the [Configuration-Based Client Initialization](doc/configuration-based-clie
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as fs from 'fs';
-import { Client } from 'google-maps-platformlib';
+import { Client } from 'googlemapsplatform';
 
 // Optional - Provide absolute path for the .env file
 const absolutePath = path.resolve('./.env');

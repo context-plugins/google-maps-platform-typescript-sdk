@@ -23,7 +23,7 @@ Specifies the assumptions to use when calculating time in traffic. This setting 
 ## Example
 
 ```ts
-import { TrafficModel1 } from 'google-maps-platformlib';
+import { TrafficModel1 } from 'googlemapsplatform';
 
 const trafficModel1 = TrafficModel1.BestGuess;
 ```

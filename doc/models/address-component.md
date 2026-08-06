@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { AddressComponent } from 'google-maps-platformlib';
+import { AddressComponent } from 'googlemapsplatform';
 
 const addressComponent: AddressComponent = {
   longName: 'Council of the City of Sydney',

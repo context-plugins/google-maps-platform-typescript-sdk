@@ -23,7 +23,7 @@ Attributes used to describe a WiFi access point.
 ## Example
 
 ```ts
-import { WiFiAccessPoint } from 'google-maps-platformlib';
+import { WiFiAccessPoint } from 'googlemapsplatform';
 
 const wiFiAccessPoint: WiFiAccessPoint = {
   macAddress: 'macAddress6',

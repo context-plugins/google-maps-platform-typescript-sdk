@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { FieldViolation } from 'google-maps-platformlib';
+import { FieldViolation } from 'googlemapsplatform';
 
 const fieldViolation: FieldViolation = {
   field: 'field2',

@@ -15,7 +15,7 @@
 ## Example
 
 ```ts
-import { Inputtype } from 'google-maps-platformlib';
+import { Inputtype } from 'googlemapsplatform';
 
 const inputtype = Inputtype.Textquery;
 ```

@@ -27,7 +27,7 @@ For the calculation of distances and directions, you may specify the transportat
 ## Example
 
 ```ts
-import { Mode1 } from 'google-maps-platformlib';
+import { Mode1 } from 'googlemapsplatform';
 
 const mode1 = Mode1.Transit;
 ```

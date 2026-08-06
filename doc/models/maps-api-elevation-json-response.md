@@ -22,7 +22,7 @@
 import {
   ElevationStatus,
   MapsApiElevationJsonResponse,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const mapsApiElevationJsonResponse: MapsApiElevationJsonResponse = {
   status: ElevationStatus.DataNotAvailable,

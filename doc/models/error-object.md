@@ -21,7 +21,7 @@
 ## Example
 
 ```ts
-import { ErrorObject } from 'google-maps-platformlib';
+import { ErrorObject } from 'googlemapsplatform';
 
 const errorObject: ErrorObject = {
   code: 56.8,

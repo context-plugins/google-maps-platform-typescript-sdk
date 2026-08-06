@@ -17,7 +17,7 @@
 ## Example
 
 ```ts
-import { Polyline } from 'google-maps-platformlib';
+import { Polyline } from 'googlemapsplatform';
 
 const polyline: Polyline = {
   points: 'chnwEbderQ?XR@D?@?',

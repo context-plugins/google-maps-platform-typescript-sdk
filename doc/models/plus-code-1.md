@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { PlusCode1 } from 'google-maps-platformlib';
+import { PlusCode1 } from 'googlemapsplatform';
 
 const plusCode1: PlusCode1 = {
   globalCode: 'global_code6',

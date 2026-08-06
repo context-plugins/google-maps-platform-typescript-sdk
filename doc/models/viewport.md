@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Viewport } from 'google-maps-platformlib';
+import { Viewport } from 'googlemapsplatform';
 
 const viewport: Viewport = {
   northeast: {

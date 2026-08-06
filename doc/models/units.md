@@ -15,7 +15,7 @@
 ## Example
 
 ```ts
-import { Units } from 'google-maps-platformlib';
+import { Units } from 'googlemapsplatform';
 
 const units = Units.Imperial;
 ```

@@ -24,7 +24,7 @@
 import {
   DistanceMatrixElement,
   DistanceMatrixElementStatus,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const distanceMatrixElement: DistanceMatrixElement = {
   status: DistanceMatrixElementStatus.ZeroResults,

@@ -24,7 +24,7 @@
 ## Example
 
 ```ts
-import { PlaceAutocompletePrediction } from 'google-maps-platformlib';
+import { PlaceAutocompletePrediction } from 'googlemapsplatform';
 
 const placeAutocompletePrediction: PlaceAutocompletePrediction = {
   description: 'Paris, France',

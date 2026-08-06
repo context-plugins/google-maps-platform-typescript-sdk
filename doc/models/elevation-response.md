@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { ElevationResponse, ElevationStatus } from 'google-maps-platformlib';
+import { ElevationResponse, ElevationStatus } from 'googlemapsplatform';
 
 const elevationResponse: ElevationResponse = {
   status: ElevationStatus.OverDailyLimit,

@@ -25,7 +25,7 @@ Attributes used to describe a cell tower. The following optional fields are not 
 ## Example
 
 ```ts
-import { CellTower } from 'google-maps-platformlib';
+import { CellTower } from 'googlemapsplatform';
 
 const cellTower: CellTower = {
   cellId: 32,

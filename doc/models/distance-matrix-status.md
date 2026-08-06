@@ -36,7 +36,7 @@ Status codes returned by service.
 ## Example
 
 ```ts
-import { DistanceMatrixStatus } from 'google-maps-platformlib';
+import { DistanceMatrixStatus } from 'googlemapsplatform';
 
 const distanceMatrixStatus = DistanceMatrixStatus.OverDailyLimit;
 ```

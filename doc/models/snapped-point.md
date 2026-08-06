@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { SnappedPoint } from 'google-maps-platformlib';
+import { SnappedPoint } from 'googlemapsplatform';
 
 const snappedPoint: SnappedPoint = {
   location: {

@@ -20,7 +20,7 @@ Specifies the order in which results are listed. Possible values are:
 ## Example
 
 ```ts
-import { Rankby1 } from 'google-maps-platformlib';
+import { Rankby1 } from 'googlemapsplatform';
 
 const rankby1 = Rankby1.Prominence;
 ```

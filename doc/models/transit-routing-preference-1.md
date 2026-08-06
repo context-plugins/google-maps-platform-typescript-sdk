@@ -20,7 +20,7 @@ Specifies preferences for transit routes. Using this parameter, you can bias the
 ## Example
 
 ```ts
-import { TransitRoutingPreference1 } from 'google-maps-platformlib';
+import { TransitRoutingPreference1 } from 'googlemapsplatform';
 
 const transitRoutingPreference1 = TransitRoutingPreference1.LessWalking;
 ```

@@ -59,7 +59,7 @@
 ## Example
 
 ```ts
-import { BusinessStatus, Result2 } from 'google-maps-platformlib';
+import { BusinessStatus, Result2 } from 'googlemapsplatform';
 
 const result2: Result2 = {
   addressComponents: [

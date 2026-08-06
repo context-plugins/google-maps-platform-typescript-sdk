@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Southwest } from 'google-maps-platformlib';
+import { Southwest } from 'googlemapsplatform';
 
 const southwest: Southwest = {
   lat: 1.22,

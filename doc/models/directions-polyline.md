@@ -23,7 +23,7 @@ Additionally, to conserve space, points only include the offset from the previou
 ## Example
 
 ```ts
-import { DirectionsPolyline } from 'google-maps-platformlib';
+import { DirectionsPolyline } from 'googlemapsplatform';
 
 const directionsPolyline: DirectionsPolyline = {
   points: 'chnwEbderQ?XR@D?@?',

@@ -22,7 +22,7 @@
 ## Example
 
 ```ts
-import { TimeZoneResponse, TimeZoneStatus } from 'google-maps-platformlib';
+import { TimeZoneResponse, TimeZoneStatus } from 'googlemapsplatform';
 
 const timeZoneResponse: TimeZoneResponse = {
   status: TimeZoneStatus.InvalidRequest,

@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { NearestRoadsError } from 'google-maps-platformlib';
+import { NearestRoadsError } from 'googlemapsplatform';
 
 const nearestRoadsError: NearestRoadsError = {
   code: 161.28,

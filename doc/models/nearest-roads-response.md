@@ -17,7 +17,7 @@
 ## Example
 
 ```ts
-import { NearestRoadsResponse } from 'google-maps-platformlib';
+import { NearestRoadsResponse } from 'googlemapsplatform';
 
 const nearestRoadsResponse: NearestRoadsResponse = {
   snappedPoints: [

@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { PlaceAutocompleteTerm } from 'google-maps-platformlib';
+import { PlaceAutocompleteTerm } from 'googlemapsplatform';
 
 const placeAutocompleteTerm: PlaceAutocompleteTerm = {
   value: 'value0',

@@ -20,7 +20,7 @@ Limits Street View searches to selected sources. Valid values are:
 ## Example
 
 ```ts
-import { Source1 } from 'google-maps-platformlib';
+import { Source1 } from 'googlemapsplatform';
 
 const source1 = Source1.Default;
 ```

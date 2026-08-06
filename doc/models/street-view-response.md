@@ -21,10 +21,7 @@
 ## Example
 
 ```ts
-import {
-  StreetViewResponse,
-  StreetViewStatus,
-} from 'google-maps-platformlib';
+import { StreetViewResponse, StreetViewStatus } from 'googlemapsplatform';
 
 const streetViewResponse: StreetViewResponse = {
   status: StreetViewStatus.InvalidRequest,

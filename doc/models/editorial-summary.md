@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { EditorialSummary } from 'google-maps-platformlib';
+import { EditorialSummary } from 'googlemapsplatform';
 
 const editorialSummary: EditorialSummary = {
   overview: 'overview8',

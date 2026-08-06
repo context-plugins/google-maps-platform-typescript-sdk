@@ -41,7 +41,7 @@ The status field within the Directions response object contains the status of th
 ## Example
 
 ```ts
-import { DirectionsStatus } from 'google-maps-platformlib';
+import { DirectionsStatus } from 'googlemapsplatform';
 
 const directionsStatus = DirectionsStatus.RequestDenied;
 ```

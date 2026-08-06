@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { DirectionsTransitAgency } from 'google-maps-platformlib';
+import { DirectionsTransitAgency } from 'googlemapsplatform';
 
 const directionsTransitAgency: DirectionsTransitAgency = {
   name: 'name8',

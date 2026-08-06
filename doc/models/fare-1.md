@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { Fare1 } from 'google-maps-platformlib';
+import { Fare1 } from 'googlemapsplatform';
 
 const fare1: Fare1 = {
   currency: 'USD',

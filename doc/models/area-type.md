@@ -41,7 +41,7 @@
 ## Example
 
 ```ts
-import { AreaType } from 'google-maps-platformlib';
+import { AreaType } from 'googlemapsplatform';
 
 const areaType = AreaType.AdministrativeAreaLevel1;
 ```

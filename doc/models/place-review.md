@@ -28,7 +28,7 @@ A review of the place submitted by a user.
 ## Example
 
 ```ts
-import { PlaceReview } from 'google-maps-platformlib';
+import { PlaceReview } from 'googlemapsplatform';
 
 const placeReview: PlaceReview = {
   authorName: 'A Google User',

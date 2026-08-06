@@ -22,7 +22,7 @@
 ## Example
 
 ```ts
-import { DistanceMatrixElementStatus } from 'google-maps-platformlib';
+import { DistanceMatrixElementStatus } from 'googlemapsplatform';
 
 const distanceMatrixElementStatus = DistanceMatrixElementStatus.Ok;
 ```

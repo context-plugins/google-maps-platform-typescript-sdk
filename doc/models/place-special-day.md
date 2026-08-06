@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { PlaceSpecialDay } from 'google-maps-platformlib';
+import { PlaceSpecialDay } from 'googlemapsplatform';
 
 const placeSpecialDay: PlaceSpecialDay = {
   date: 'date2',

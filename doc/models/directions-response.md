@@ -28,7 +28,7 @@ import {
   GeocoderStatus,
   Maneuver,
   TravelMode,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const directionsResponse: DirectionsResponse = {
   routes: [

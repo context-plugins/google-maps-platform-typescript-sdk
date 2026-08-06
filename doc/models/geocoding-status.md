@@ -34,7 +34,7 @@ The `status` field within the Geocoding response object contains the status of t
 ## Example
 
 ```ts
-import { GeocodingStatus } from 'google-maps-platformlib';
+import { GeocodingStatus } from 'googlemapsplatform';
 
 const geocodingStatus = GeocodingStatus.ZeroResults;
 ```

@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Duration } from 'google-maps-platformlib';
+import { Duration } from 'googlemapsplatform';
 
 const duration: Duration = {
   text: 'text6',

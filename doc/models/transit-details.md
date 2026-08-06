@@ -25,7 +25,7 @@
 ## Example
 
 ```ts
-import { TransitDetails } from 'google-maps-platformlib';
+import { TransitDetails } from 'googlemapsplatform';
 
 const transitDetails: TransitDetails = {
   arrivalStop: {

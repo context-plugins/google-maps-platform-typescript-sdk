@@ -74,7 +74,7 @@ The language in which to return results.
 ## Example
 
 ```ts
-import { Language1 } from 'google-maps-platformlib';
+import { Language1 } from 'googlemapsplatform';
 
 const language1 = Language1.De;
 ```

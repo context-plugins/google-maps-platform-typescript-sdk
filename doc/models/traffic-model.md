@@ -16,7 +16,7 @@
 ## Example
 
 ```ts
-import { TrafficModel } from 'google-maps-platformlib';
+import { TrafficModel } from 'googlemapsplatform';
 
 const trafficModel = TrafficModel.Optimistic;
 ```

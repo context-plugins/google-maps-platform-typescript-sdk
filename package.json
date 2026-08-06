@@ -26,7 +26,7 @@
     "trailingComma": "es5",
     "quoteProps": "preserve"
   },
-  "name": "google-maps-platformlib",
+  "name": "googlemapsplatform",
   "description": "API Specification for Google Maps Platform",
   "author": {
     "name": "APIMATIC SDK Generator"

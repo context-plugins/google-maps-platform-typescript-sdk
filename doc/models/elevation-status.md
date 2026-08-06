@@ -34,7 +34,7 @@ Status codes returned by service.
 ## Example
 
 ```ts
-import { ElevationStatus } from 'google-maps-platformlib';
+import { ElevationStatus } from 'googlemapsplatform';
 
 const elevationStatus = ElevationStatus.DataNotAvailable;
 ```

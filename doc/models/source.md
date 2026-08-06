@@ -15,7 +15,7 @@
 ## Example
 
 ```ts
-import { Source } from 'google-maps-platformlib';
+import { Source } from 'googlemapsplatform';
 
 const source = Source.Default;
 ```

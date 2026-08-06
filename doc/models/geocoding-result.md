@@ -24,7 +24,7 @@
 ## Example
 
 ```ts
-import { GeocodingResult } from 'google-maps-platformlib';
+import { GeocodingResult } from 'googlemapsplatform';
 
 const geocodingResult: GeocodingResult = {
   addressComponents: [

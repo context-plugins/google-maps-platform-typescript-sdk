@@ -26,11 +26,7 @@ Routes consist of nested `legs` and `steps`.
 ## Example
 
 ```ts
-import {
-  DirectionsRoute,
-  Maneuver,
-  TravelMode,
-} from 'google-maps-platformlib';
+import { DirectionsRoute, Maneuver, TravelMode } from 'googlemapsplatform';
 
 const directionsRoute: DirectionsRoute = {
   legs: [

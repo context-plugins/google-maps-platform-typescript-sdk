@@ -24,7 +24,7 @@
 ## Example
 
 ```ts
-import { DirectionsTransitLine } from 'google-maps-platformlib';
+import { DirectionsTransitLine } from 'googlemapsplatform';
 
 const directionsTransitLine: DirectionsTransitLine = {
   agencies: [

@@ -30,7 +30,7 @@ The `status` field within the Streetview Metadata response object contains the s
 ## Example
 
 ```ts
-import { StreetViewStatus } from 'google-maps-platformlib';
+import { StreetViewStatus } from 'googlemapsplatform';
 
 const streetViewStatus = StreetViewStatus.RequestDenied;
 ```

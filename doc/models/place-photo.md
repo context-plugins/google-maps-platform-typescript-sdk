@@ -28,7 +28,7 @@ See [Place Photos](https://developers.google.com/places/web-service/photos) for 
 ## Example
 
 ```ts
-import { PlacePhoto } from 'google-maps-platformlib';
+import { PlacePhoto } from 'googlemapsplatform';
 
 const placePhoto: PlacePhoto = {
   height: 249.02,

@@ -20,7 +20,7 @@
 ## Example
 
 ```ts
-import { PlaceAutocompleteStructuredFormat } from 'google-maps-platformlib';
+import { PlaceAutocompleteStructuredFormat } from 'googlemapsplatform';
 
 const placeAutocompleteStructuredFormat: PlaceAutocompleteStructuredFormat = {
   mainText: 'main_text4',

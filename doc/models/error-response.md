@@ -19,7 +19,7 @@ In the case of an error, a standard format error response body will be returned 
 ## Example
 
 ```ts
-import { ErrorResponse } from 'google-maps-platformlib';
+import { ErrorResponse } from 'googlemapsplatform';
 
 const errorResponse: ErrorResponse = {
   error: {

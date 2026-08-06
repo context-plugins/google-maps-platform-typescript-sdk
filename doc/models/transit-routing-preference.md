@@ -15,7 +15,7 @@
 ## Example
 
 ```ts
-import { TransitRoutingPreference } from 'google-maps-platformlib';
+import { TransitRoutingPreference } from 'googlemapsplatform';
 
 const transitRoutingPreference = TransitRoutingPreference.LessWalking;
 ```

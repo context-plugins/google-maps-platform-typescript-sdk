@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Bounds1 } from 'google-maps-platformlib';
+import { Bounds1 } from 'googlemapsplatform';
 
 const bounds1: Bounds1 = {
   northeast: {

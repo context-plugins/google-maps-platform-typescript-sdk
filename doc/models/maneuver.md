@@ -35,7 +35,7 @@ Contains the action to take for the current step (turn left, merge, straight, et
 ## Example
 
 ```ts
-import { Maneuver } from 'google-maps-platformlib';
+import { Maneuver } from 'googlemapsplatform';
 
 const maneuver = Maneuver.Uturnright;
 ```

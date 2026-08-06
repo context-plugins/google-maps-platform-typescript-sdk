@@ -17,7 +17,7 @@
 ## Example
 
 ```ts
-import { LocationType } from 'google-maps-platformlib';
+import { LocationType } from 'googlemapsplatform';
 
 const locationType = LocationType.Approximate;
 ```

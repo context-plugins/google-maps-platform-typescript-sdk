@@ -20,7 +20,7 @@ An object containing a numeric value and its formatted text representation.
 ## Example
 
 ```ts
-import { TextValueObject } from 'google-maps-platformlib';
+import { TextValueObject } from 'googlemapsplatform';
 
 const textValueObject: TextValueObject = {
   text: 'text4',

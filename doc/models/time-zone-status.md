@@ -41,7 +41,7 @@ The `status` field within the Time Zone response object contains the status of t
 ## Example
 
 ```ts
-import { TimeZoneStatus } from 'google-maps-platformlib';
+import { TimeZoneStatus } from 'googlemapsplatform';
 
 const timeZoneStatus = TimeZoneStatus.OverQueryLimit;
 ```

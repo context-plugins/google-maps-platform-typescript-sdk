@@ -20,7 +20,7 @@ Restricts results to only those places within the specified range. Valid values 
 ## Example
 
 ```ts
-import { Maxprice1 } from 'google-maps-platformlib';
+import { Maxprice1 } from 'googlemapsplatform';
 
 const maxprice1 = Maxprice1.Enum0;
 ```

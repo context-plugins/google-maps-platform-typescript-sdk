@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Minprice } from 'google-maps-platformlib';
+import { Minprice } from 'googlemapsplatform';
 
 const minprice = Minprice.Enum1;
 ```

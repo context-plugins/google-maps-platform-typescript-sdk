@@ -17,7 +17,7 @@
 ## Example
 
 ```ts
-import { NearestRoadsErrorResponse } from 'google-maps-platformlib';
+import { NearestRoadsErrorResponse } from 'googlemapsplatform';
 
 const nearestRoadsErrorResponse: NearestRoadsErrorResponse = {
   error: {

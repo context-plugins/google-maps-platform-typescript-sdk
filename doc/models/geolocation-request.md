@@ -25,7 +25,7 @@ The request body must be formatted as JSON. The following fields are supported, 
 ## Example
 
 ```ts
-import { GeolocationRequest } from 'google-maps-platformlib';
+import { GeolocationRequest } from 'googlemapsplatform';
 
 const geolocationRequest: GeolocationRequest = {
   homeMobileCountryCode: 98,

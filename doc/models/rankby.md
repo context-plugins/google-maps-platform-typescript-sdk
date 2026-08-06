@@ -15,7 +15,7 @@
 ## Example
 
 ```ts
-import { Rankby } from 'google-maps-platformlib';
+import { Rankby } from 'googlemapsplatform';
 
 const rankby = Rankby.Prominence;
 ```

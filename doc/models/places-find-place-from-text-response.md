@@ -24,7 +24,7 @@ import {
   BusinessStatus,
   PlacesFindPlaceFromTextResponse,
   PlacesSearchStatus,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const placesFindPlaceFromTextResponse: PlacesFindPlaceFromTextResponse = {
   candidates: [

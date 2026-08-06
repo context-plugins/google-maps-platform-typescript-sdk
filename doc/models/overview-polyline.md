@@ -17,7 +17,7 @@
 ## Example
 
 ```ts
-import { OverviewPolyline } from 'google-maps-platformlib';
+import { OverviewPolyline } from 'googlemapsplatform';
 
 const overviewPolyline: OverviewPolyline = {
   points: 'chnwEbderQ?XR@D?@?',

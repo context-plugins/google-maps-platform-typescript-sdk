@@ -17,7 +17,7 @@ The API client can be initialized as follows:
 ## Code-Based Client Initialization
 
 ```ts
-import { Client, Environment, LogLevel } from 'google-maps-platformlib';
+import { Client, Environment, LogLevel } from 'googlemapsplatform';
 
 const client = new Client({
   customQueryAuthenticationCredentials: {
@@ -42,7 +42,7 @@ const client = new Client({
 ```ts
 import * as path from 'path';
 import * as fs from 'fs';
-import { Client } from 'google-maps-platformlib';
+import { Client } from 'googlemapsplatform';
 
 // Provide absolute path for the configuration file
 const absolutePath = path.resolve('./config.json');
@@ -62,7 +62,7 @@ See the [Configuration-Based Client Initialization](../doc/configuration-based-c
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as fs from 'fs';
-import { Client } from 'google-maps-platformlib';
+import { Client } from 'googlemapsplatform';
 
 // Optional - Provide absolute path for the .env file
 const absolutePath = path.resolve('./.env');

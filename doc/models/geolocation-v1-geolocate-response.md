@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { GeolocationV1GeolocateResponse } from 'google-maps-platformlib';
+import { GeolocationV1GeolocateResponse } from 'googlemapsplatform';
 
 const geolocationV1GeolocateResponse: GeolocationV1GeolocateResponse = {
   location: {

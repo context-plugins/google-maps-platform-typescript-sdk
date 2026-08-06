@@ -23,7 +23,7 @@ An object describing the opening hours of a place.
 ## Example
 
 ```ts
-import { PlaceOpeningHours } from 'google-maps-platformlib';
+import { PlaceOpeningHours } from 'googlemapsplatform';
 
 const placeOpeningHours: PlaceOpeningHours = {
   openNow: false,

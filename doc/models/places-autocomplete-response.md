@@ -23,7 +23,7 @@
 import {
   PlacesAutocompleteResponse,
   PlacesAutocompleteStatus,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const placesAutocompleteResponse: PlacesAutocompleteResponse = {
   predictions: [

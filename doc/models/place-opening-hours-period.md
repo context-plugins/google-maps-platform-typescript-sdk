@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { PlaceOpeningHoursPeriod } from 'google-maps-platformlib';
+import { PlaceOpeningHoursPeriod } from 'googlemapsplatform';
 
 const placeOpeningHoursPeriod: PlaceOpeningHoursPeriod = {
   open: {

@@ -66,7 +66,7 @@
 ## Example
 
 ```ts
-import { Language } from 'google-maps-platformlib';
+import { Language } from 'googlemapsplatform';
 
 const language = Language.Tr;
 ```

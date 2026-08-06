@@ -21,7 +21,7 @@ An object containing Unix time, a time zone, and its formatted text representati
 ## Example
 
 ```ts
-import { TimeZoneTextValueObject } from 'google-maps-platformlib';
+import { TimeZoneTextValueObject } from 'googlemapsplatform';
 
 const timeZoneTextValueObject: TimeZoneTextValueObject = {
   text: 'text6',

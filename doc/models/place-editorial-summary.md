@@ -20,7 +20,7 @@ Contains a summary of the place. A summary is comprised of a textual overview, a
 ## Example
 
 ```ts
-import { PlaceEditorialSummary } from 'google-maps-platformlib';
+import { PlaceEditorialSummary } from 'googlemapsplatform';
 
 const placeEditorialSummary: PlaceEditorialSummary = {
   overview: 'overview2',

@@ -27,7 +27,7 @@ For example, a route from "Chicago, IL" to "Toronto, ONT" will display results i
 ## Example
 
 ```ts
-import { Units1 } from 'google-maps-platformlib';
+import { Units1 } from 'googlemapsplatform';
 
 const units1 = Units1.Imperial;
 ```

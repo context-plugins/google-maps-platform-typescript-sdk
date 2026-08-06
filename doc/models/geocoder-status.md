@@ -17,7 +17,7 @@ Indicates the status code resulting from the geocoding operation. This field may
 ## Example
 
 ```ts
-import { GeocoderStatus } from 'google-maps-platformlib';
+import { GeocoderStatus } from 'googlemapsplatform';
 
 const geocoderStatus = GeocoderStatus.Ok;
 ```

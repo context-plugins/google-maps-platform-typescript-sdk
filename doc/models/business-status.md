@@ -18,7 +18,7 @@ Indicates the operational status of the place, if it is a business. If no data e
 ## Example
 
 ```ts
-import { BusinessStatus } from 'google-maps-platformlib';
+import { BusinessStatus } from 'googlemapsplatform';
 
 const businessStatus = BusinessStatus.Operational;
 ```

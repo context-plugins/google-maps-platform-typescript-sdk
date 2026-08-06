@@ -20,7 +20,7 @@ An object describing the location.
 ## Example
 
 ```ts
-import { Geometry } from 'google-maps-platformlib';
+import { Geometry } from 'googlemapsplatform';
 
 const geometry: Geometry = {
   location: {

@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { DirectionsTransitStop } from 'google-maps-platformlib';
+import { DirectionsTransitStop } from 'googlemapsplatform';
 
 const directionsTransitStop: DirectionsTransitStop = {
   location: {

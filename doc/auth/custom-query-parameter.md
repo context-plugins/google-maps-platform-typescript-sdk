@@ -22,7 +22,7 @@ Documentation for accessing and setting credentials for ApiKeyAuth.
 You must provide credentials in the client as shown in the following code snippet.
 
 ```ts
-import { Client } from 'google-maps-platformlib';
+import { Client } from 'googlemapsplatform';
 
 const client = new Client({
   customQueryAuthenticationCredentials: {

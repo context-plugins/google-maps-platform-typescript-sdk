@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Distance } from 'google-maps-platformlib';
+import { Distance } from 'googlemapsplatform';
 
 const distance: Distance = {
   text: 'text0',

@@ -35,7 +35,7 @@ Status codes returned by service.
 ## Example
 
 ```ts
-import { PlacesSearchStatus } from 'google-maps-platformlib';
+import { PlacesSearchStatus } from 'googlemapsplatform';
 
 const placesSearchStatus = PlacesSearchStatus.Ok;
 ```

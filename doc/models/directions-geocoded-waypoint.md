@@ -24,7 +24,7 @@ import {
   AreaType,
   DirectionsGeocodedWaypoint,
   GeocoderStatus,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const directionsGeocodedWaypoint: DirectionsGeocodedWaypoint = {
   geocoderStatus: GeocoderStatus.Ok,

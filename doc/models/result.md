@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { Result } from 'google-maps-platformlib';
+import { Result } from 'googlemapsplatform';
 
 const result: Result = {
   elevation: 224.48,

@@ -20,7 +20,7 @@ A rectangle in geographical coordinates from points at the southwest and northea
 ## Example
 
 ```ts
-import { Bounds } from 'google-maps-platformlib';
+import { Bounds } from 'googlemapsplatform';
 
 const bounds: Bounds = {
   northeast: {

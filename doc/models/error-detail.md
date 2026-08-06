@@ -22,7 +22,7 @@
 ## Example
 
 ```ts
-import { ErrorDetail } from 'google-maps-platformlib';
+import { ErrorDetail } from 'googlemapsplatform';
 
 const errorDetail: ErrorDetail = {
   mType: '@type6',

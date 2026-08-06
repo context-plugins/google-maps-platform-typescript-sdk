@@ -19,7 +19,7 @@
 ## Example
 
 ```ts
-import { DepartureTime } from 'google-maps-platformlib';
+import { DepartureTime } from 'googlemapsplatform';
 
 const departureTime: DepartureTime = {
   text: 'text6',

@@ -24,7 +24,7 @@ import {
   BusinessStatus,
   PlacesDetailsResponse,
   PlacesDetailsStatus,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const placesDetailsResponse: PlacesDetailsResponse = {
   htmlAttributions: [

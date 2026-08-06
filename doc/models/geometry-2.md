@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { Geometry2 } from 'google-maps-platformlib';
+import { Geometry2 } from 'googlemapsplatform';
 
 const geometry2: Geometry2 = {
   location: {

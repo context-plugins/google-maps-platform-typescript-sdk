@@ -21,7 +21,7 @@ An object describing the location.
 ## Example
 
 ```ts
-import { GeocodingGeometry } from 'google-maps-platformlib';
+import { GeocodingGeometry } from 'googlemapsplatform';
 
 const geocodingGeometry: GeocodingGeometry = {
   location: {

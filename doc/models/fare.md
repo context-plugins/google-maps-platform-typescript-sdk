@@ -29,7 +29,7 @@ The total fare for the route.
 ## Example
 
 ```ts
-import { Fare } from 'google-maps-platformlib';
+import { Fare } from 'googlemapsplatform';
 
 const fare: Fare = {
   currency: 'USD',

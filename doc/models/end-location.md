@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { EndLocation } from 'google-maps-platformlib';
+import { EndLocation } from 'googlemapsplatform';
 
 const endLocation: EndLocation = {
   lat: 144.96,

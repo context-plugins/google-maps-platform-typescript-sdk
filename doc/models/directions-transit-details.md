@@ -27,7 +27,7 @@ Additional information that is not relevant for other modes of transportation.
 ## Example
 
 ```ts
-import { DirectionsTransitDetails } from 'google-maps-platformlib';
+import { DirectionsTransitDetails } from 'googlemapsplatform';
 
 const directionsTransitDetails: DirectionsTransitDetails = {
   arrivalStop: {

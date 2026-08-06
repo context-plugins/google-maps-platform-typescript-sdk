@@ -18,7 +18,7 @@
 ## Example
 
 ```ts
-import { PlaceAutocompleteMatchedSubstring } from 'google-maps-platformlib';
+import { PlaceAutocompleteMatchedSubstring } from 'googlemapsplatform';
 
 const placeAutocompleteMatchedSubstring: PlaceAutocompleteMatchedSubstring = {
   length: 242.24,

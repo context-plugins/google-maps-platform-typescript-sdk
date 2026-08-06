@@ -271,7 +271,7 @@ The region code, specified as a [ccTLD ("top-level domain")](https://en.wikipedi
 ## Example
 
 ```ts
-import { Region1 } from 'google-maps-platformlib';
+import { Region1 } from 'googlemapsplatform';
 
 const region1 = Region1.Sh;
 ```

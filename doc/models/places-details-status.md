@@ -37,7 +37,7 @@ Status codes returned by service.
 ## Example
 
 ```ts
-import { PlacesDetailsStatus } from 'google-maps-platformlib';
+import { PlacesDetailsStatus } from 'googlemapsplatform';
 
 const placesDetailsStatus = PlacesDetailsStatus.UnknownError;
 ```

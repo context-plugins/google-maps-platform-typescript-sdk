@@ -30,11 +30,7 @@ When using the Directions API to search for transit directions, the steps array 
 ## Example
 
 ```ts
-import {
-  DirectionsStep,
-  Maneuver,
-  TravelMode,
-} from 'google-maps-platformlib';
+import { DirectionsStep, Maneuver, TravelMode } from 'googlemapsplatform';
 
 const directionsStep: DirectionsStep = {
   duration: {

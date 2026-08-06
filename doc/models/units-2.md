@@ -20,7 +20,7 @@ Specifies the unit system to use when displaying results.
 ## Example
 
 ```ts
-import { Units2 } from 'google-maps-platformlib';
+import { Units2 } from 'googlemapsplatform';
 
 const units2 = Units2.Imperial;
 ```

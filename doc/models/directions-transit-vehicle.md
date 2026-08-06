@@ -20,10 +20,7 @@
 ## Example
 
 ```ts
-import {
-  DirectionsTransitVehicle,
-  VehicleType,
-} from 'google-maps-platformlib';
+import { DirectionsTransitVehicle, VehicleType } from 'googlemapsplatform';
 
 const directionsTransitVehicle: DirectionsTransitVehicle = {
   name: 'Train',

@@ -35,7 +35,7 @@ Status codes returned by service.
 ## Example
 
 ```ts
-import { PlacesAutocompleteStatus } from 'google-maps-platformlib';
+import { PlacesAutocompleteStatus } from 'googlemapsplatform';
 
 const placesAutocompleteStatus = PlacesAutocompleteStatus.Ok;
 ```

@@ -20,7 +20,7 @@
 import {
   DistanceMatrixElementStatus,
   DistanceMatrixRow,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const distanceMatrixRow: DistanceMatrixRow = {
   elements: [

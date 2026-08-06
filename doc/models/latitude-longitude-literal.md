@@ -20,7 +20,7 @@ An object describing a specific location with Latitude and Longitude in decimal 
 ## Example
 
 ```ts
-import { LatitudeLongitudeLiteral } from 'google-maps-platformlib';
+import { LatitudeLongitudeLiteral } from 'googlemapsplatform';
 
 const latitudeLongitudeLiteral: LatitudeLongitudeLiteral = {
   latitude: 52.42,

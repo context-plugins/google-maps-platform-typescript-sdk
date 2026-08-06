@@ -17,7 +17,7 @@
 ## Example
 
 ```ts
-import { Mode } from 'google-maps-platformlib';
+import { Mode } from 'googlemapsplatform';
 
 const mode = Mode.Transit;
 ```

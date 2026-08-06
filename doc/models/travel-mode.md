@@ -22,7 +22,7 @@
 ## Example
 
 ```ts
-import { TravelMode } from 'google-maps-platformlib';
+import { TravelMode } from 'googlemapsplatform';
 
 const travelMode = TravelMode.Transit;
 ```

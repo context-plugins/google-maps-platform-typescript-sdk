@@ -34,7 +34,7 @@
 ## Example
 
 ```ts
-import { ResultType } from 'google-maps-platformlib';
+import { ResultType } from 'googlemapsplatform';
 
 const resultType = ResultType.AdministrativeAreaLevel1;
 ```

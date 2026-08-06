@@ -25,7 +25,7 @@ import {
   DistanceMatrixElementStatus,
   DistanceMatrixResponse,
   DistanceMatrixStatus,
-} from 'google-maps-platformlib';
+} from 'googlemapsplatform';
 
 const distanceMatrixResponse: DistanceMatrixResponse = {
   originAddresses: [

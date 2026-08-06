@@ -20,7 +20,7 @@
 ## Example
 
 ```ts
-import { PlaceOpeningHoursPeriodDetail } from 'google-maps-platformlib';
+import { PlaceOpeningHoursPeriodDetail } from 'googlemapsplatform';
 
 const placeOpeningHoursPeriodDetail: PlaceOpeningHoursPeriodDetail = {
   day: 154.72,

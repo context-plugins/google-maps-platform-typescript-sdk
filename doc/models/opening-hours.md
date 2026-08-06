@@ -21,7 +21,7 @@
 ## Example
 
 ```ts
-import { OpeningHours } from 'google-maps-platformlib';
+import { OpeningHours } from 'googlemapsplatform';
 
 const openingHours: OpeningHours = {
   openNow: false,

@@ -17,7 +17,7 @@ The type of input. This can be one of either `textquery` or `phonenumber`. Phone
 ## Example
 
 ```ts
-import { Inputtype1 } from 'google-maps-platformlib';
+import { Inputtype1 } from 'googlemapsplatform';
 
 const inputtype1 = Inputtype1.Textquery;
 ```

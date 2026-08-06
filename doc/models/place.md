@@ -61,7 +61,7 @@ Attributes describing a place. Not all attributes will be available for all plac
 ## Example
 
 ```ts
-import { BusinessStatus, Place } from 'google-maps-platformlib';
+import { BusinessStatus, Place } from 'googlemapsplatform';
 
 const place: Place = {
   addressComponents: [

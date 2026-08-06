@@ -269,7 +269,7 @@
 ## Example
 
 ```ts
-import { Region } from 'google-maps-platformlib';
+import { Region } from 'googlemapsplatform';
 
 const region = Region.Ch;
 ```

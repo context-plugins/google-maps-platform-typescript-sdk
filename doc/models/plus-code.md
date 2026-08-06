@@ -22,7 +22,7 @@ Site describing Plus Codes.: [https://plus.codes/](https://plus.codes/)
 ## Example
 
 ```ts
-import { PlusCode } from 'google-maps-platformlib';
+import { PlusCode } from 'googlemapsplatform';
 
 const plusCode: PlusCode = {
   globalCode: 'global_code6',

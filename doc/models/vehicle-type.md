@@ -52,7 +52,7 @@ The type of vehicle used.
 ## Example
 
 ```ts
-import { VehicleType } from 'google-maps-platformlib';
+import { VehicleType } from 'googlemapsplatform';
 
 const vehicleType = VehicleType.CommuterTrain;
 ```

@@ -20,7 +20,7 @@
 ## Example
 
 ```ts
-import { GeocodingResponse, GeocodingStatus } from 'google-maps-platformlib';
+import { GeocodingResponse, GeocodingStatus } from 'googlemapsplatform';
 
 const geocodingResponse: GeocodingResponse = {
   results: [

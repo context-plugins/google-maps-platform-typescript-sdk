@@ -23,7 +23,7 @@
 ## Example
 
 ```ts
-import { GeolocationV1GeolocateRequest } from 'google-maps-platformlib';
+import { GeolocationV1GeolocateRequest } from 'googlemapsplatform';
 
 const geolocationV1GeolocateRequest: GeolocationV1GeolocateRequest = {
   homeMobileCountryCode: 112,

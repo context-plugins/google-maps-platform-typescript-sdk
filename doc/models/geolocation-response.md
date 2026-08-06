@@ -20,7 +20,7 @@ A successful geolocation request will return a JSON-formatted response defining 
 ## Example
 
 ```ts
-import { GeolocationResponse } from 'google-maps-platformlib';
+import { GeolocationResponse } from 'googlemapsplatform';
 
 const geolocationResponse: GeolocationResponse = {
   location: {
