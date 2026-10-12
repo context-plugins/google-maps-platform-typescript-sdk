@@ -8,6 +8,7 @@ export type GeocodingResponse = {
   plusCode?: PlusCode1;
   results: GeocodingResult[];
   status: GeocodingStatus;
+  /** A short description of the error. */
   errorMessage?: string;
 };
 

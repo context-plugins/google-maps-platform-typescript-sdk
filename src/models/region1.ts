@@ -1,6 +1,13 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * The region code, specified as a [ccTLD ("top-level
+ * domain")](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains)
+ * two-character value. Most ccTLD codes are identical to ISO 3166-1 codes, with some notable
+ * exceptions. For example, the United Kingdom's ccTLD is "uk" (.co.uk) while its ISO 3166-1 code is
+ * "gb" (technically for the entity of "The United Kingdom of Great Britain and Northern Ireland").
+ */
 export const Region1 = {
   Ac: "ac",
   Ad: "ad",

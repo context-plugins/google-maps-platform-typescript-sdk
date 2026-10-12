@@ -5,12 +5,36 @@ import { directionsLegSchema, type DirectionsLeg } from "./directions-leg.js";
 import { fare1Schema, type Fare1 } from "./fare1.js";
 import { overviewPolylineSchema, type OverviewPolyline } from "./overview-polyline.js";
 
+/** Routes consist of nested `legs` and `steps`. */
 export type DirectionsRoute = {
+  /**
+   * An array which contains information about a leg of the route, between two locations within the
+   * given route. A separate leg will be present for each waypoint or destination specified. (A
+   * route with no waypoints will contain exactly one leg within the legs array.) Each leg consists
+   * of a series of steps.
+   */
   legs: DirectionsLeg[];
   bounds: Bounds1;
+  /**
+   * Contains the copyright notices to be displayed for this route. You must handle and display this
+   * information yourself. This content is meant to be read as-is. Do not programmatically parse
+   * this display-only content.
+   */
   copyrights: string;
+  /**
+   * Contains a short textual description for the route, suitable for naming and disambiguating the
+   * route from alternatives.
+   */
   summary: string;
+  /**
+   * An array indicating the order of any waypoints in the calculated route. This waypoints may be
+   * reordered if the request was passed optimize:true within its waypoints parameter.
+   */
   waypointOrder: number[];
+  /**
+   * Contains an array of warnings to be displayed when showing these directions. You must handle
+   * and display these warnings yourself.
+   */
   warnings: string[];
   overviewPolyline: OverviewPolyline;
   fare?: Fare1;
@@ -21,7 +45,7 @@ export const directionsRouteSchema: Schema<DirectionsRoute> = s.object<Direction
   bounds: bounds1Schema,
   copyrights: s.string(),
   summary: s.string(),
-  waypointOrder: s.array(s.number()),
+  waypointOrder: s.array(s.int()),
   warnings: s.array(s.string()),
   overviewPolyline: overviewPolylineSchema,
   fare: s.optional(s.lazy(() => fare1Schema)),

@@ -1,17 +1,29 @@
-import type { FetchLike } from "./core/api-request.js";
 import type { TokenProvider } from "./core/auth/credentials.js";
-import { ServerEnvironment, type ServerOptions } from "./servers.js";
+import type { CoreClientOptions } from "./core/client-options.js";
+import { ServerEnvironment } from "./servers.js";
 
-export type ClientOptions = {
-  readonly serverEnvironment: ServerEnvironment;
-  readonly serverOptions: ServerOptions;
-  readonly timeout: number;
-  readonly fetch?: FetchLike | undefined;
+export type ClientOptions = SdkClientOptions & CoreClientOptions;
+
+type SdkClientOptions = ServerOptions & {
   readonly apiKeyAuth?: TokenProvider | undefined;
 };
 
-export const DEFAULT_CLIENT_OPTIONS: ClientOptions = {
-  serverEnvironment: ServerEnvironment.Production,
-  serverOptions: {},
-  timeout: 60_000,
-};
+type ServerOptions =
+  | {
+      readonly serverEnvironment?: typeof ServerEnvironment.Production;
+      readonly serverOptions?: {
+        baseUrl?: string;
+      };
+    }
+  | {
+      readonly serverEnvironment: typeof ServerEnvironment.Environment2;
+      readonly serverOptions?: {
+        baseUrl?: string;
+      };
+    }
+  | {
+      readonly serverEnvironment: typeof ServerEnvironment.Environment3;
+      readonly serverOptions?: {
+        baseUrl?: string;
+      };
+    };

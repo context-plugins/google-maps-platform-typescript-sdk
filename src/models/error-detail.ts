@@ -3,11 +3,17 @@ import type { Schema } from "../core/validation/schema.js";
 import { fieldViolationSchema, type FieldViolation } from "./field-violation.js";
 
 export type ErrorDetail = {
+  /** The type of error. */
   type?: string;
+  /** A short description of the error. */
   message?: string;
+  /** A reason for the error. */
   reason?: string;
+  /** The domain in which the error occurred. */
   domain?: string;
+  /** Additional metadata about the error. */
   metadata?: Record<string, unknown>;
+  /** A list of field violations. */
   fieldViolations?: FieldViolation[];
 };
 

@@ -9,7 +9,7 @@ export type Result = {
 };
 
 export const resultSchema: Schema<Result> = s.object<Result>({
-  elevation: s.optional(s.number()),
-  resolution: s.optional(s.number()),
+  elevation: s.optional(s.float64()),
+  resolution: s.optional(s.float64()),
   location: s.optional(s.lazy(() => locationSchema)),
 });

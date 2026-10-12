@@ -1,6 +1,10 @@
 import * as s from "../core/validation/index.js";
 import type { EnumSchema } from "../core/validation/schema.js";
 
+/**
+ * Contains the action to take for the current step (turn left, merge, straight, etc.). Values are
+ * subject to change, and new values may be introduced without prior notice.
+ */
 export const Maneuver = {
   TurnSlightLeft: "turn-slight-left",
   TurnSharpLeft: "turn-sharp-left",

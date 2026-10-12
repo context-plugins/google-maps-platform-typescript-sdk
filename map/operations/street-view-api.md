@@ -4,16 +4,16 @@
 
 Accessor: `client.streetViewApi` · Source: `src/resources/street-view-api.ts` · 2 operations · Request types: namespace `StreetViewApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### streetView
 
-- **Signature**: `streetView(request: StreetViewApi.StreetViewRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `streetView(request: StreetViewApi.StreetViewRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `GET /maps/api/streetview`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StreetViewApi.StreetViewRequest` (10):
 
@@ -36,12 +36,12 @@ Accessor: `client.streetViewApi` · Source: `src/resources/street-view-api.ts` �
 
 ### streetViewMetadata
 
-- **Signature**: `streetViewMetadata(request: StreetViewApi.StreetViewMetadataRequest, options?: RequestOptions): ApiPromise<StreetViewResponse, ResponseError>`
+- **Signature**: `streetViewMetadata(request: StreetViewApi.StreetViewMetadataRequest, options?: RequestOptions): ApiPromise<StreetViewResponse, ApiError>`
 - **Wire**: `GET /maps/api/streetview/metadata`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `StreetViewResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `StreetViewApi.StreetViewMetadataRequest` (9):
 

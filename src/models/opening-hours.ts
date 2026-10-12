@@ -4,10 +4,21 @@ import { placeOpeningHoursPeriodSchema, type PlaceOpeningHoursPeriod } from "./p
 import { placeSpecialDaySchema, type PlaceSpecialDay } from "./place-special-day.js";
 
 export type OpeningHours = {
+  /** A boolean value indicating if the place is open at the current time. */
   openNow?: boolean;
+  /**
+   * An array of opening periods covering seven days, starting from Sunday, in chronological order.
+   */
   periods?: PlaceOpeningHoursPeriod[];
+  /** An array of up to seven entries corresponding to the next seven days. */
   specialDays?: PlaceSpecialDay[];
+  /**
+   * A type string used to identify the type of secondary hours (for example, `DRIVE_THROUGH`,
+   * `HAPPY_HOUR`, `DELIVERY`, `TAKEOUT`, `KITCHEN`, `BREAKFAST`, `LUNCH`, `DINNER`, `BRUNCH`,
+   * `PICKUP`, `SENIOR_HOURS`). Set for `secondary_opening_hours` only.
+   */
   type?: string;
+  /** An array of strings describing in human-readable text the hours of the place. */
   weekdayText?: string[];
 };
 

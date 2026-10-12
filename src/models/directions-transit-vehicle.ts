@@ -3,8 +3,14 @@ import type { Schema } from "../core/validation/schema.js";
 import { vehicleTypeSchema, type VehicleType } from "./vehicle-type.js";
 
 export type DirectionsTransitVehicle = {
+  /** Contains the URL for an icon associated with this vehicle type. */
   icon?: string;
+  /**
+   * Contains the URL for the icon associated with this vehicle type, based on the local transport
+   * signage.
+   */
   localIcon?: string;
+  /** The name of this vehicle, capitalized. */
   name: string;
   vehicleType?: VehicleType;
 };

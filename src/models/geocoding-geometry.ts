@@ -4,6 +4,7 @@ import { bounds1Schema, type Bounds1 } from "./bounds1.js";
 import { locationSchema, type Location } from "./location.js";
 import { viewportSchema, type Viewport } from "./viewport.js";
 
+/** An object describing the location. */
 export type GeocodingGeometry = {
   location: Location;
   bounds?: Bounds1;

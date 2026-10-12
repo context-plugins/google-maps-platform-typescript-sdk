@@ -1,6 +1,9 @@
 import { buildAuthSchemes, type AuthSchemes } from "./auth-schemes.js";
-import { DEFAULT_CLIENT_OPTIONS, type ClientOptions } from "./client-options.js";
+import type { ClientOptions } from "./client-options.js";
+import { buildCoreClientOptions } from "./core/client-options.js";
 import { RawClient } from "./core/raw-client.js";
+import * as host from "./core/runtime-environment.js";
+import * as s from "./core/validation/index.js";
 import { DirectionsApi } from "./resources/directions-api.js";
 import { DistanceMatrixApi } from "./resources/distance-matrix-api.js";
 import { ElevationApi } from "./resources/elevation-api.js";
@@ -12,6 +15,9 @@ import { StreetViewApi } from "./resources/street-view-api.js";
 import { TimeZoneApi } from "./resources/time-zone-api.js";
 import { buildServers, type Servers } from "./servers.js";
 
+/**
+ * API Specification for Google Maps Platform
+ */
 export class GoogleMapsPlatformClient {
   readonly #rawClient: RawClient;
   readonly #servers: Servers;
@@ -26,18 +32,22 @@ export class GoogleMapsPlatformClient {
   #placesApi?: PlacesApi;
   #streetViewApi?: StreetViewApi;
 
-  constructor(clientOptions: Partial<ClientOptions> = {}) {
-    const options = { ...DEFAULT_CLIENT_OPTIONS, ...clientOptions };
-
+  constructor(options: ClientOptions = {}) {
     this.#rawClient = new RawClient({
-      timeout: options.timeout,
-      defaultHeaders: [],
+      ...buildCoreClientOptions(options, "GOOGLE_MAPS_PLATFORM_CLIENT_LOG"),
+      defaultHeaders: [
+        { name: "User-Agent", value: "GoogleMapsPlatformClient/1.22.5 TypeScript", schema: s.string() },
+        { name: "X-APIMatic-Lang", value: "TypeScript", schema: s.string() },
+        { name: "X-APIMatic-Package-Version", value: "1.22.5", schema: s.string() },
+        { name: "X-APIMatic-Gen-Version", value: "4.0.0", schema: s.string() },
+        { name: "X-APIMatic-OS", value: host.operatingSystem(), schema: s.optional(s.string()) },
+        { name: "X-APIMatic-Runtime", value: host.runtimeDescription(), schema: s.optional(s.string()) },
+      ],
       defaultQuery: [],
       defaultPathParams: [],
-      fetch: options.fetch,
     });
 
-    this.#servers = buildServers(options.serverEnvironment, options.serverOptions);
+    this.#servers = buildServers(options);
 
     this.#auth = buildAuthSchemes(options);
   }

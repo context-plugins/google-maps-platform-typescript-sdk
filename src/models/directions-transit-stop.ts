@@ -4,6 +4,7 @@ import { locationSchema, type Location } from "./location.js";
 
 export type DirectionsTransitStop = {
   location: Location;
+  /** The name of the transit stop. */
   name: string;
 };
 

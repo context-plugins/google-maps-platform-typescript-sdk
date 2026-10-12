@@ -1,22 +1,47 @@
 import * as s from "../core/validation/index.js";
 import type { Schema } from "../core/validation/schema.js";
 
+/**
+ * Attributes used to describe a cell tower. The following optional fields are not currently used,
+ * but may be included if values are available: `age`, `signalStrength`, `timingAdvance`.
+ */
 export type CellTower = {
+  /**
+   * Unique identifier of the cell. On GSM, this is the Cell ID (CID); CDMA networks use the Base
+   * Station ID (BID). WCDMA networks use the UTRAN/GERAN Cell Identity (UC-Id), which is a 32-bit
+   * value concatenating the Radio Network Controller (RNC) and Cell ID. Specifying only the 16-bit
+   * Cell ID value in WCDMA networks may return inaccurate results.
+   */
   cellId: number;
+  /**
+   * The Location Area Code (LAC) for GSM and WCDMA networks. The Network ID (NID) for CDMA
+   * networks.
+   */
   locationAreaCode: number;
+  /** The cell tower's Mobile Country Code (MCC). */
   mobileCountryCode: number;
+  /**
+   * The cell tower's Mobile Network Code. This is the MNC for GSM and WCDMA; CDMA uses the System
+   * ID (SID).
+   */
   mobileNetworkCode: number;
+  /**
+   * The number of milliseconds since this cell was primary. If age is 0, the cellId represents a
+   * current measurement.
+   */
   age?: number;
+  /** Radio signal strength measured in dBm. */
   signalStrength?: number;
+  /** The timing advance value. */
   timingAdvance?: number;
 };
 
 export const cellTowerSchema: Schema<CellTower> = s.object<CellTower>({
-  cellId: s.number(),
-  locationAreaCode: s.number(),
-  mobileCountryCode: s.number(),
-  mobileNetworkCode: s.number(),
-  age: s.optional(s.number()),
-  signalStrength: s.optional(s.number()),
-  timingAdvance: s.optional(s.number()),
+  cellId: s.int(),
+  locationAreaCode: s.int(),
+  mobileCountryCode: s.int(),
+  mobileNetworkCode: s.int(),
+  age: s.optional(s.int()),
+  signalStrength: s.optional(s.float64()),
+  timingAdvance: s.optional(s.float64()),
 });

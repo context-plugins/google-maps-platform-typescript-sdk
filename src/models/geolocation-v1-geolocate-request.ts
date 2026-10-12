@@ -4,19 +4,35 @@ import { cellTowerSchema, type CellTower } from "./cell-tower.js";
 import { wiFiAccessPointSchema, type WiFiAccessPoint } from "./wi-fi-access-point.js";
 
 export type GeolocationV1GeolocateRequest = {
+  /** The cell tower's Mobile Country Code (MCC). */
   homeMobileCountryCode?: number;
+  /**
+   * The cell tower's Mobile Network Code. This is the MNC for GSM and WCDMA; CDMA uses the System
+   * ID (SID).
+   */
   homeMobileNetworkCode?: number;
+  /**
+   * The mobile radio type. Supported values are lte, gsm, cdma, and wcdma. While this field is
+   * optional, it should be included if a value is available, for more accurate results.
+   */
   radioType?: string;
+  /** The carrier name. */
   carrier?: string;
+  /**
+   * Specifies whether to fall back to IP geolocation if wifi and cell tower signals are not
+   * available. Defaults to true. Set considerIp to false to disable fall back.
+   */
   considerIp?: string;
+  /** The request body's cellTowers array contains zero or more cell tower objects. */
   cellTowers?: CellTower[];
+  /** An array of two or more WiFi access point objects. */
   wifiAccessPoints?: WiFiAccessPoint[];
 };
 
 export const geolocationV1GeolocateRequestSchema: Schema<GeolocationV1GeolocateRequest> =
   s.object<GeolocationV1GeolocateRequest>({
-    homeMobileCountryCode: s.optional(s.number()),
-    homeMobileNetworkCode: s.optional(s.number()),
+    homeMobileCountryCode: s.optional(s.int()),
+    homeMobileNetworkCode: s.optional(s.int()),
     radioType: s.optional(s.string()),
     carrier: s.optional(s.string()),
     considerIp: s.optional(s.string()),

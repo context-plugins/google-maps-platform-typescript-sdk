@@ -4,16 +4,16 @@
 
 Accessor: `client.distanceMatrixApi` · Source: `src/resources/distance-matrix-api.ts` · 1 operation · Request types: namespace `DistanceMatrixApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### distanceMatrix
 
-- **Signature**: `distanceMatrix(request: DistanceMatrixApi.DistanceMatrixRequest, options?: RequestOptions): ApiPromise<DistanceMatrixResponse, ResponseError>`
+- **Signature**: `distanceMatrix(request: DistanceMatrixApi.DistanceMatrixRequest, options?: RequestOptions): ApiPromise<DistanceMatrixResponse, ApiError>`
 - **Wire**: `GET /maps/api/distancematrix/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `DistanceMatrixResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `DistanceMatrixApi.DistanceMatrixRequest` (12):
 

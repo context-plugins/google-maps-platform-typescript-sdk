@@ -4,16 +4,17 @@
 
 Accessor: `client.geolocationApi` · Source: `src/resources/geolocation-api.ts` · 1 operation · Request and error types: namespace `GeolocationApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### geolocate
 
 - **Signature**: `geolocate(request: GeolocationApi.GeolocateRequest, options?: RequestOptions): ApiPromise<GeolocationV1GeolocateResponse, GeolocationApi.GeolocateError>`
 - **Wire**: `POST /geolocation/v1/geolocate`
 - **Auth**: `apiKeyAuth`
-- **Request body**: `application/json` — the `body` field
+- **Request body**: `application/json` — the `body` field. **Optional**: omit it and the request carries no body and no `Content-Type` header at all
+- **SDK-sent**: `header Idempotency-Key` (minted per call)
 - **Returns**: `GeolocationV1GeolocateResponse`
-- **Error**: `GeolocationApi.GeolocateError` — **typed arms**, narrowed on `err.payload.kind`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"`, an instance of `GeolocationApi.GeolocateError` — **typed arms**, narrowed on `err.payload.kind`
 - **Error arms**: `"geolocationV1Geolocate400Error1"` [400] `GeolocationV1Geolocate400Error1` · `"geolocationV1Geolocate404Error1"` [404] `GeolocationV1Geolocate404Error1` · `"undeclared"` [any other] `rawBody: ArrayBuffer`
 
 **Fields** — `GeolocationApi.GeolocateRequest` (1):

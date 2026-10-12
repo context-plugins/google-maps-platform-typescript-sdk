@@ -3,6 +3,7 @@ import type { Schema } from "../core/validation/schema.js";
 import { locationSchema, type Location } from "./location.js";
 import { viewportSchema, type Viewport } from "./viewport.js";
 
+/** An object describing the location. */
 export type Geometry = {
   location: Location;
   viewport: Viewport;

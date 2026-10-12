@@ -7,12 +7,22 @@ import {
 } from "./directions-transit-vehicle.js";
 
 export type DirectionsTransitLine = {
+  /** The transit agency (or agencies) that operates this transit line. */
   agencies: DirectionsTransitAgency[];
+  /** The color commonly used in signage for this line. */
   color?: string;
+  /** The full name of this transit line, e.g. "8 Avenue Local". */
   name: string;
+  /**
+   * The short name of this transit line. This will normally be a line number, such as "M7" or
+   * "355".
+   */
   shortName?: string;
+  /** The color commonly used in signage for this line. */
   textColor?: string;
+  /** Contains the URL for this transit line as provided by the transit agency. */
   url?: string;
+  /** Contains the URL for the icon associated with this line. */
   icon?: string;
   vehicle?: DirectionsTransitVehicle;
 };

@@ -1,8 +1,9 @@
 import type { AuthSchemes } from "../auth-schemes.js";
+import { ApiError, type Declared, type ErrorDecoders, type ErrorPayload } from "../core/api-error.js";
 import type { ApiPromise } from "../core/api-promise.js";
 import type { RequestOptions } from "../core/api-request.js";
 import type { RawClient } from "../core/raw-client.js";
-import { ResponseError, type Declared, type ErrorDecoders } from "../core/response-error.js";
+import { uuid } from "../core/uuid.js";
 import * as s from "../core/validation/index.js";
 import {
   geolocationV1GeolocateRequestSchema,
@@ -33,6 +34,31 @@ export class GeolocationApi {
     this.#auth = auth;
   }
 
+  /**
+   * geolocate
+   *
+   * @remarks
+   * Geolocation API returns a location and accuracy radius based on information about cell towers
+   * and WiFi nodes that the mobile client can detect. This document describes the protocol used to
+   * send this data to the server and to return a response to the client.
+   *
+   * Communication is done over HTTPS using POST. Both request and response are formatted as JSON,
+   * and the content type of both is `application/json`.
+   *
+   * You must specify a key in your request, included as the value of a`key` parameter. A `key` is
+   * your application's API key. This key identifies your application for purposes of quota
+   * management. Learn how to [get a
+   * key](https://developers.google.com/maps/documentation/geolocation/get-api-key).
+   *
+   * @returns 200 OK
+   *
+   * @throws {@link GeolocationApi.GeolocateError} when the API answers with an error status —
+   * narrow on `err.payload.kind`
+   *
+   * @throws {@link GoogleMapsPlatformError} when no usable response was produced: a connection
+   * failure, a timeout, a body that would not decode, a value that would not encode, or a
+   * credential that could not be obtained
+   */
   geolocate(
     request: GeolocationApi.GeolocateRequest,
     options?: RequestOptions,
@@ -40,8 +66,11 @@ export class GeolocationApi {
     return this.#rawClient.execute(
       {
         method: "POST",
-        url: this.#servers.default("/geolocation/v1/geolocate"),
+        urlTemplate: this.#servers.default("/geolocation/v1/geolocate"),
         auth: this.#auth.apiKeyAuth,
+        pathParams: [],
+        query: [],
+        headers: [{ name: "Idempotency-Key", value: uuid(), schema: s.string() }],
         body: {
           kind: "json",
           value: request.body,
@@ -59,13 +88,16 @@ export class GeolocationApi {
 
 export namespace GeolocationApi {
   export type GeolocateRequest = {
+    /** The request body must be formatted as JSON. */
     body?: GeolocationV1GeolocateRequest;
   };
 
-  export class GeolocateError extends ResponseError<
-    | Declared<"geolocationV1Geolocate400Error1", GeolocationV1Geolocate400Error1>
-    | Declared<"geolocationV1Geolocate404Error1", GeolocationV1Geolocate404Error1>
-  > {
+  export class GeolocateError extends ApiError {
+    declare readonly payload: ErrorPayload<
+      | Declared<"geolocationV1Geolocate400Error1", GeolocationV1Geolocate400Error1>
+      | Declared<"geolocationV1Geolocate404Error1", GeolocationV1Geolocate404Error1>
+    >;
+
     static readonly errors: ErrorDecoders<GeolocateError> = [
       {
         on: 400,

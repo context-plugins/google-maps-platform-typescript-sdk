@@ -3,7 +3,9 @@ import type { Schema } from "../core/validation/schema.js";
 import { snappedPointSchema, type SnappedPoint } from "./snapped-point.js";
 
 export type SnapToRoadsResponse = {
+  /** An array of snapped points. */
   snappedPoints?: SnappedPoint[];
+  /** A string containing a user-visible warning. */
   warningMessage?: string;
 };
 

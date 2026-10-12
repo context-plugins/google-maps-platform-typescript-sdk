@@ -4,16 +4,16 @@
 
 Accessor: `client.placesApi` · Source: `src/resources/places-api.ts` · 7 operations · Request types: namespace `PlacesApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### autocomplete
 
-- **Signature**: `autocomplete(request: PlacesApi.AutocompleteRequest, options?: RequestOptions): ApiPromise<PlacesAutocompleteResponse, ResponseError>`
+- **Signature**: `autocomplete(request: PlacesApi.AutocompleteRequest, options?: RequestOptions): ApiPromise<PlacesAutocompleteResponse, ApiError>`
 - **Wire**: `GET /maps/api/place/autocomplete/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `PlacesAutocompleteResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `PlacesApi.AutocompleteRequest` (13):
 
@@ -41,12 +41,12 @@ Accessor: `client.placesApi` · Source: `src/resources/places-api.ts` · 7 opera
 
 ### findPlaceFromText
 
-- **Signature**: `findPlaceFromText(request: PlacesApi.FindPlaceFromTextRequest, options?: RequestOptions): ApiPromise<PlacesFindPlaceFromTextResponse, ResponseError>`
+- **Signature**: `findPlaceFromText(request: PlacesApi.FindPlaceFromTextRequest, options?: RequestOptions): ApiPromise<PlacesFindPlaceFromTextResponse, ApiError>`
 - **Wire**: `GET /maps/api/place/findplacefromtext/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `PlacesFindPlaceFromTextResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `PlacesApi.FindPlaceFromTextRequest` (5):
 
@@ -66,12 +66,12 @@ Accessor: `client.placesApi` · Source: `src/resources/places-api.ts` · 7 opera
 
 ### nearbySearch
 
-- **Signature**: `nearbySearch(request: PlacesApi.NearbySearchRequest, options?: RequestOptions): ApiPromise<PlacesTextSearchResponse, ResponseError>`
+- **Signature**: `nearbySearch(request: PlacesApi.NearbySearchRequest, options?: RequestOptions): ApiPromise<PlacesTextSearchResponse, ApiError>`
 - **Wire**: `GET /maps/api/place/nearbysearch/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `PlacesTextSearchResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `PlacesApi.NearbySearchRequest` (11):
 
@@ -99,12 +99,12 @@ Accessor: `client.placesApi` · Source: `src/resources/places-api.ts` · 7 opera
 
 ### placeDetails
 
-- **Signature**: `placeDetails(request: PlacesApi.PlaceDetailsRequest, options?: RequestOptions): ApiPromise<PlacesDetailsResponse, ResponseError>`
+- **Signature**: `placeDetails(request: PlacesApi.PlaceDetailsRequest, options?: RequestOptions): ApiPromise<PlacesDetailsResponse, ApiError>`
 - **Wire**: `GET /maps/api/place/details/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `PlacesDetailsResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `PlacesApi.PlaceDetailsRequest` (7):
 
@@ -126,12 +126,12 @@ Accessor: `client.placesApi` · Source: `src/resources/places-api.ts` · 7 opera
 
 ### placePhoto
 
-- **Signature**: `placePhoto(request: PlacesApi.PlacePhotoRequest, options?: RequestOptions): ApiPromise<undefined, ResponseError>`
+- **Signature**: `placePhoto(request: PlacesApi.PlacePhotoRequest, options?: RequestOptions): ApiPromise<undefined, ApiError>`
 - **Wire**: `GET /maps/api/place/photo`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `undefined` — the operation resolves to nothing
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `PlacesApi.PlacePhotoRequest` (3):
 
@@ -143,12 +143,12 @@ Accessor: `client.placesApi` · Source: `src/resources/places-api.ts` · 7 opera
 
 ### queryAutocomplete
 
-- **Signature**: `queryAutocomplete(request: PlacesApi.QueryAutocompleteRequest, options?: RequestOptions): ApiPromise<PlacesQueryAutocompleteResponse, ResponseError>`
+- **Signature**: `queryAutocomplete(request: PlacesApi.QueryAutocompleteRequest, options?: RequestOptions): ApiPromise<PlacesQueryAutocompleteResponse, ApiError>`
 - **Wire**: `GET /maps/api/place/queryautocomplete/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `PlacesQueryAutocompleteResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `PlacesApi.QueryAutocompleteRequest` (5):
 
@@ -167,12 +167,12 @@ Accessor: `client.placesApi` · Source: `src/resources/places-api.ts` · 7 opera
 
 ### textSearch
 
-- **Signature**: `textSearch(request: PlacesApi.TextSearchRequest, options?: RequestOptions): ApiPromise<PlacesTextSearchResponse, ResponseError>`
+- **Signature**: `textSearch(request: PlacesApi.TextSearchRequest, options?: RequestOptions): ApiPromise<PlacesTextSearchResponse, ApiError>`
 - **Wire**: `GET /maps/api/place/textsearch/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `PlacesTextSearchResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `PlacesApi.TextSearchRequest` (10):
 

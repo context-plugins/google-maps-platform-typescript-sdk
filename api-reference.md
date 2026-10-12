@@ -26,21 +26,51 @@ You must specify a key in your request, included as the value of a`key` paramete
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.geolocationApi.geolocate();
+  const response = await client.geolocationApi.geolocate({
+    body: {
+      considerIp: "false",
+      wifiAccessPoints: [
+        { macAddress: "84:d4:7e:09:a5:f1", signalStrength: -43, signalToNoiseRatio: 0 },
+        { macAddress: "44:48:c1:a6:f3:d0", signalStrength: -55, signalToNoiseRatio: 0 },
+      ],
+    },
+  });
   // TODO: Handle 'response' of type GeolocationV1GeolocateResponse
 } catch (err) {
-  if (
-    err instanceof GeolocationApi.GeolocateError && err.payload.kind === "geolocationV1Geolocate400Error1"
-  ) {
-    // TODO: Handle 'err.payload.body' of type GeolocationV1Geolocate400Error1
-  }
+  // TODO: Handle 'err' of type GeolocationApi.GeolocateError, discriminated with 'err.payload.kind'
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.geolocationApi.geolocate({
+  body: {
+    considerIp: "false",
+    wifiAccessPoints: [
+      { macAddress: "84:d4:7e:09:a5:f1", signalStrength: -43, signalToNoiseRatio: 0 },
+      { macAddress: "44:48:c1:a6:f3:d0", signalStrength: -55, signalToNoiseRatio: 0 },
+    ],
+  },
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type GeolocationV1GeolocateResponse
+} else {
+  // TODO: Handle 'result', discriminated with 'result.payload.kind'
 }
 ```
 
@@ -64,9 +94,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[GeolocationV1GeolocateResponse](src/models/geolocation-v1-geolocate-response.ts)</code>
+**Direct**: `await client.geolocationApi.geolocate(request)`
 
-**OnError**: <code>[GeolocationApi.GeolocateError](src/resources/geolocation-api.ts)</code>
+- **OnSuccess**: <code>[GeolocationV1GeolocateResponse](src/models/geolocation-v1-geolocate-response.ts)</code>
+- **OnError**: throws <code>[GeolocationApi.GeolocateError](src/resources/geolocation-api.ts)</code>, with `err.payload` discriminated on `kind`
+
+**As ApiResult**: `await client.geolocationApi.geolocate(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;GeolocationV1GeolocateResponse, GeolocationApi.GeolocateError&gt;</code>, with `result.value` of type <code>[GeolocationV1GeolocateResponse](src/models/geolocation-v1-geolocate-response.ts)</code>
+- **OnError**: `result.payload` discriminated on `kind`, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -81,7 +119,7 @@ try {
 > Source: [DirectionsApi](src/resources/directions-api.ts)
 
 <details>
-<summary><code>directions(request: DirectionsApi.DirectionsRequest, options?: RequestOptions): ApiPromise&lt;DirectionsResponse, ResponseError&gt;</code></summary>
+<summary><code>directions(request: DirectionsApi.DirectionsRequest, options?: RequestOptions): ApiPromise&lt;DirectionsResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -96,17 +134,47 @@ The Directions API is a web service that uses an HTTP request to return JSON or 
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.directionsApi.directions({ destination, origin });
+  const response = await client.directionsApi.directions({
+    destination: "Victoria, BC",
+    origin: "Vancouver, BC",
+    avoid: "highways",
+    waypoints: "MA|Lexington,MA",
+    transitMode: "train|tram|subway",
+  });
   // TODO: Handle 'response' of type DirectionsResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.directionsApi.directions({
+  destination: "Victoria, BC",
+  origin: "Vancouver, BC",
+  avoid: "highways",
+  waypoints: "MA|Lexington,MA",
+  transitMode: "train|tram|subway",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type DirectionsResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -143,9 +211,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[DirectionsResponse](src/models/directions-response.ts)</code>
+**Direct**: `await client.directionsApi.directions(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[DirectionsResponse](src/models/directions-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.directionsApi.directions(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;DirectionsResponse, ApiError&gt;</code>, with `result.value` of type <code>[DirectionsResponse](src/models/directions-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -160,7 +236,7 @@ try {
 > Source: [ElevationApi](src/resources/elevation-api.ts)
 
 <details>
-<summary><code>elevation(request: ElevationApi.ElevationRequest, options?: RequestOptions): ApiPromise&lt;MapsApiElevationJsonResponse, ResponseError&gt;</code></summary>
+<summary><code>elevation(request: ElevationApi.ElevationRequest, options?: RequestOptions): ApiPromise&lt;MapsApiElevationJsonResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -180,17 +256,43 @@ Requests to the Elevation API utilize different parameters based on whether the 
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.elevationApi.elevation();
+  const response = await client.elevationApi.elevation({
+    locations: ["35,-100", "40,-110"],
+    path: ["35,-110", "33,-110", "31,-110"],
+    samples: 10,
+  });
   // TODO: Handle 'response' of type MapsApiElevationJsonResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.elevationApi.elevation({
+  locations: ["35,-100", "40,-110"],
+  path: ["35,-110", "33,-110", "31,-110"],
+  samples: 10,
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type MapsApiElevationJsonResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -216,9 +318,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[MapsApiElevationJsonResponse](src/models/maps-api-elevation-json-response.ts)</code>
+**Direct**: `await client.elevationApi.elevation(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[MapsApiElevationJsonResponse](src/models/maps-api-elevation-json-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.elevationApi.elevation(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;MapsApiElevationJsonResponse, ApiError&gt;</code>, with `result.value` of type <code>[MapsApiElevationJsonResponse](src/models/maps-api-elevation-json-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -233,7 +343,7 @@ try {
 > Source: [GeocodingApi](src/resources/geocoding-api.ts)
 
 <details>
-<summary><code>geocode(request: GeocodingApi.GeocodeRequest, options?: RequestOptions): ApiPromise&lt;GeocodingResponse, ResponseError&gt;</code></summary>
+<summary><code>geocode(request: GeocodingApi.GeocodeRequest, options?: RequestOptions): ApiPromise&lt;GeocodingResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -256,17 +366,59 @@ To see countries currently supported by the Google Maps Platform Geocoding API, 
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.geocodingApi.geocode();
+  const response = await client.geocodingApi.geocode({
+    address: "1600 Amphitheatre+Parkway, Mountain View, CA",
+    bounds: ["35,-100", "40,-110"],
+    components: [
+      "street_number:1600",
+      "route:Amphitheatre+Parkway",
+      "locality:Mountain+View",
+      "administrative_area_level_1:CA",
+      "country:US",
+    ],
+    latlng: "40,-110",
+    placeId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
+  });
   // TODO: Handle 'response' of type GeocodingResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.geocodingApi.geocode({
+  address: "1600 Amphitheatre+Parkway, Mountain View, CA",
+  bounds: ["35,-100", "40,-110"],
+  components: [
+    "street_number:1600",
+    "route:Amphitheatre+Parkway",
+    "locality:Mountain+View",
+    "administrative_area_level_1:CA",
+    "country:US",
+  ],
+  latlng: "40,-110",
+  placeId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type GeocodingResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -298,9 +450,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[GeocodingResponse](src/models/geocoding-response.ts)</code>
+**Direct**: `await client.geocodingApi.geocode(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[GeocodingResponse](src/models/geocoding-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.geocodingApi.geocode(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;GeocodingResponse, ApiError&gt;</code>, with `result.value` of type <code>[GeocodingResponse](src/models/geocoding-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -315,7 +475,7 @@ try {
 > Source: [TimeZoneApi](src/resources/time-zone-api.ts)
 
 <details>
-<summary><code>timezone(request: TimeZoneApi.TimezoneRequest, options?: RequestOptions): ApiPromise&lt;TimeZoneResponse, ResponseError&gt;</code></summary>
+<summary><code>timezone(request: TimeZoneApi.TimezoneRequest, options?: RequestOptions): ApiPromise&lt;TimeZoneResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -331,17 +491,41 @@ The Time Zone API provides a simple interface to request the time zone for locat
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.timeZoneApi.timezone({ location, timestamp });
+  const response = await client.timeZoneApi.timezone({
+    location: "39.6034810,-119.6822510",
+    timestamp: 1331161200,
+  });
   // TODO: Handle 'response' of type TimeZoneResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.timeZoneApi.timezone({
+  location: "39.6034810,-119.6822510",
+  timestamp: 1331161200,
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type TimeZoneResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -367,9 +551,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[TimeZoneResponse](src/models/time-zone-response.ts)</code>
+**Direct**: `await client.timeZoneApi.timezone(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[TimeZoneResponse](src/models/time-zone-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.timeZoneApi.timezone(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;TimeZoneResponse, ApiError&gt;</code>, with `result.value` of type <code>[TimeZoneResponse](src/models/time-zone-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -399,19 +591,39 @@ This service returns individual road segments for a given set of GPS coordinates
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.roadsApi.nearestRoads({ points });
+  const response = await client.roadsApi.nearestRoads({
+    points: ["60.170880,24.942795", "60.170879,24.942796", "60.170877,24.942796"],
+  });
   // TODO: Handle 'response' of type NearestRoadsResponse
 } catch (err) {
-  if (err instanceof RoadsApi.NearestRoadsApiError && err.payload.kind === "nearestRoadsErrorResponse") {
-    // TODO: Handle 'err.payload.body' of type NearestRoadsErrorResponse
-  }
+  // TODO: Handle 'err' of type RoadsApi.NearestRoadsApiError, discriminated with 'err.payload.kind'
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.roadsApi.nearestRoads({
+  points: ["60.170880,24.942795", "60.170879,24.942796", "60.170877,24.942796"],
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type NearestRoadsResponse
+} else {
+  // TODO: Handle 'result', discriminated with 'result.payload.kind'
 }
 ```
 
@@ -435,9 +647,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[NearestRoadsResponse](src/models/nearest-roads-response.ts)</code>
+**Direct**: `await client.roadsApi.nearestRoads(request)`
 
-**OnError**: <code>[RoadsApi.NearestRoadsApiError](src/resources/roads-api.ts)</code>
+- **OnSuccess**: <code>[NearestRoadsResponse](src/models/nearest-roads-response.ts)</code>
+- **OnError**: throws <code>[RoadsApi.NearestRoadsApiError](src/resources/roads-api.ts)</code>, with `err.payload` discriminated on `kind`
+
+**As ApiResult**: `await client.roadsApi.nearestRoads(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;NearestRoadsResponse, RoadsApi.NearestRoadsApiError&gt;</code>, with `result.value` of type <code>[NearestRoadsResponse](src/models/nearest-roads-response.ts)</code>
+- **OnError**: `result.payload` discriminated on `kind`, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -448,7 +668,7 @@ try {
 </details>
 
 <details>
-<summary><code>snapToRoads(request: RoadsApi.SnapToRoadsRequest, options?: RequestOptions): ApiPromise&lt;SnapToRoadsResponse, ResponseError&gt;</code></summary>
+<summary><code>snapToRoads(request: RoadsApi.SnapToRoadsRequest, options?: RequestOptions): ApiPromise&lt;SnapToRoadsResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -463,17 +683,41 @@ This service returns the best-fit road geometry for a given set of GPS coordinat
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.roadsApi.snapToRoads({ path });
+  const response = await client.roadsApi.snapToRoads({
+    path: ["60.170880,24.942795", "60.170879,24.942796", "60.170877,24.942796"],
+    interpolate: true,
+  });
   // TODO: Handle 'response' of type SnapToRoadsResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.roadsApi.snapToRoads({
+  path: ["60.170880,24.942795", "60.170879,24.942796", "60.170877,24.942796"],
+  interpolate: true,
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type SnapToRoadsResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -498,9 +742,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[SnapToRoadsResponse](src/models/snap-to-roads-response.ts)</code>
+**Direct**: `await client.roadsApi.snapToRoads(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[SnapToRoadsResponse](src/models/snap-to-roads-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.roadsApi.snapToRoads(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;SnapToRoadsResponse, ApiError&gt;</code>, with `result.value` of type <code>[SnapToRoadsResponse](src/models/snap-to-roads-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -515,7 +767,7 @@ try {
 > Source: [DistanceMatrixApi](src/resources/distance-matrix-api.ts)
 
 <details>
-<summary><code>distanceMatrix(request: DistanceMatrixApi.DistanceMatrixRequest, options?: RequestOptions): ApiPromise&lt;DistanceMatrixResponse, ResponseError&gt;</code></summary>
+<summary><code>distanceMatrix(request: DistanceMatrixApi.DistanceMatrixRequest, options?: RequestOptions): ApiPromise&lt;DistanceMatrixResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -530,17 +782,45 @@ The Distance Matrix API is a service that provides travel distance and time for 
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.distanceMatrixApi.distanceMatrix({ destinations, origins });
+  const response = await client.distanceMatrixApi.distanceMatrix({
+    destinations: ["San Francisco", "Victoria BC"],
+    origins: ["Vancouver BC", "Seattle"],
+    avoid: "highways",
+    transitMode: "train|tram|subway",
+  });
   // TODO: Handle 'response' of type DistanceMatrixResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.distanceMatrixApi.distanceMatrix({
+  destinations: ["San Francisco", "Victoria BC"],
+  origins: ["Vancouver BC", "Seattle"],
+  avoid: "highways",
+  transitMode: "train|tram|subway",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type DistanceMatrixResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -575,9 +855,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[DistanceMatrixResponse](src/models/distance-matrix-response.ts)</code>
+**Direct**: `await client.distanceMatrixApi.distanceMatrix(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[DistanceMatrixResponse](src/models/distance-matrix-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.distanceMatrixApi.distanceMatrix(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;DistanceMatrixResponse, ApiError&gt;</code>, with `result.value` of type <code>[DistanceMatrixResponse](src/models/distance-matrix-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -592,7 +880,7 @@ try {
 > Source: [PlacesApi](src/resources/places-api.ts)
 
 <details>
-<summary><code>autocomplete(request: PlacesApi.AutocompleteRequest, options?: RequestOptions): ApiPromise&lt;PlacesAutocompleteResponse, ResponseError&gt;</code></summary>
+<summary><code>autocomplete(request: PlacesApi.AutocompleteRequest, options?: RequestOptions): ApiPromise&lt;PlacesAutocompleteResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -613,17 +901,53 @@ The returned predictions are designed to be presented to the user to aid them in
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.placesApi.autocomplete({ input, radius });
+  const response = await client.placesApi.autocomplete({
+    input: "some example string",
+    radius: 1000,
+    components: "country:us|country:pr",
+    offset: 3,
+    origin: "40,-110",
+    location: "40,-110",
+    locationbias: "ipbias",
+    locationrestriction: "circle:1000@37.781157,-122.398720",
+  });
   // TODO: Handle 'response' of type PlacesAutocompleteResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.placesApi.autocomplete({
+  input: "some example string",
+  radius: 1000,
+  components: "country:us|country:pr",
+  offset: 3,
+  origin: "40,-110",
+  location: "40,-110",
+  locationbias: "ipbias",
+  locationrestriction: "circle:1000@37.781157,-122.398720",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type PlacesAutocompleteResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -659,9 +983,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PlacesAutocompleteResponse](src/models/places-autocomplete-response.ts)</code>
+**Direct**: `await client.placesApi.autocomplete(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[PlacesAutocompleteResponse](src/models/places-autocomplete-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.placesApi.autocomplete(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;PlacesAutocompleteResponse, ApiError&gt;</code>, with `result.value` of type <code>[PlacesAutocompleteResponse](src/models/places-autocomplete-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -672,7 +1004,7 @@ try {
 </details>
 
 <details>
-<summary><code>findPlaceFromText(request: PlacesApi.FindPlaceFromTextRequest, options?: RequestOptions): ApiPromise&lt;PlacesFindPlaceFromTextResponse, ResponseError&gt;</code></summary>
+<summary><code>findPlaceFromText(request: PlacesApi.FindPlaceFromTextRequest, options?: RequestOptions): ApiPromise&lt;PlacesFindPlaceFromTextResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -689,17 +1021,45 @@ A Find Place request takes a text input and returns a place. The input can be an
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.placesApi.findPlaceFromText({ input, inputtype });
+  const response = await client.placesApi.findPlaceFromText({
+    input: "Museum of Contemporary Art Australia",
+    inputtype: Inputtype1.Textquery,
+    fields: ["formatted_address"],
+    locationbias: "ipbias",
+  });
   // TODO: Handle 'response' of type PlacesFindPlaceFromTextResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.placesApi.findPlaceFromText({
+  input: "Museum of Contemporary Art Australia",
+  inputtype: Inputtype1.Textquery,
+  fields: ["formatted_address"],
+  locationbias: "ipbias",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type PlacesFindPlaceFromTextResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -727,9 +1087,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PlacesFindPlaceFromTextResponse](src/models/places-find-place-from-text-response.ts)</code>
+**Direct**: `await client.placesApi.findPlaceFromText(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[PlacesFindPlaceFromTextResponse](src/models/places-find-place-from-text-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.placesApi.findPlaceFromText(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;PlacesFindPlaceFromTextResponse, ApiError&gt;</code>, with `result.value` of type <code>[PlacesFindPlaceFromTextResponse](src/models/places-find-place-from-text-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -740,7 +1108,7 @@ try {
 </details>
 
 <details>
-<summary><code>nearbySearch(request: PlacesApi.NearbySearchRequest, options?: RequestOptions): ApiPromise&lt;PlacesTextSearchResponse, ResponseError&gt;</code></summary>
+<summary><code>nearbySearch(request: PlacesApi.NearbySearchRequest, options?: RequestOptions): ApiPromise&lt;PlacesTextSearchResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -755,17 +1123,35 @@ A Nearby Search lets you search for places within a specified area. You can refi
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.placesApi.nearbySearch({ location, radius });
+  const response = await client.placesApi.nearbySearch({ location: "40,-110", radius: 1000 });
   // TODO: Handle 'response' of type PlacesTextSearchResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.placesApi.nearbySearch({ location: "40,-110", radius: 1000 }).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type PlacesTextSearchResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -799,9 +1185,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PlacesTextSearchResponse](src/models/places-text-search-response.ts)</code>
+**Direct**: `await client.placesApi.nearbySearch(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[PlacesTextSearchResponse](src/models/places-text-search-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.placesApi.nearbySearch(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;PlacesTextSearchResponse, ApiError&gt;</code>, with `result.value` of type <code>[PlacesTextSearchResponse](src/models/places-text-search-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -812,7 +1206,7 @@ try {
 </details>
 
 <details>
-<summary><code>placeDetails(request: PlacesApi.PlaceDetailsRequest, options?: RequestOptions): ApiPromise&lt;PlacesDetailsResponse, ResponseError&gt;</code></summary>
+<summary><code>placeDetails(request: PlacesApi.PlaceDetailsRequest, options?: RequestOptions): ApiPromise&lt;PlacesDetailsResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -827,17 +1221,41 @@ The Places API is a service that returns information about places using HTTP req
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.placesApi.placeDetails({ placeId });
+  const response = await client.placesApi.placeDetails({
+    placeId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
+    fields: ["formatted_address"],
+  });
   // TODO: Handle 'response' of type PlacesDetailsResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.placesApi.placeDetails({
+  placeId: "ChIJN1t_tDeuEmsRUsoyG83frY4",
+  fields: ["formatted_address"],
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type PlacesDetailsResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -867,9 +1285,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PlacesDetailsResponse](src/models/places-details-response.ts)</code>
+**Direct**: `await client.placesApi.placeDetails(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[PlacesDetailsResponse](src/models/places-details-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.placesApi.placeDetails(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;PlacesDetailsResponse, ApiError&gt;</code>, with `result.value` of type <code>[PlacesDetailsResponse](src/models/places-details-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -880,7 +1306,7 @@ try {
 </details>
 
 <details>
-<summary><code>placePhoto(request: PlacesApi.PlacePhotoRequest, options?: RequestOptions): ApiPromise&lt;undefined, ResponseError&gt;</code></summary>
+<summary><code>placePhoto(request: PlacesApi.PlacePhotoRequest, options?: RequestOptions): ApiPromise&lt;undefined, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -898,16 +1324,34 @@ Photos returned by the Photo service are sourced from a variety of locations, in
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  await client.placesApi.placePhoto({ photoReference });
+  await client.placesApi.placePhoto({ photoReference: "some example string" });
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.placesApi.placePhoto({ photoReference: "some example string" }).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: The call succeeded and resolves to no body
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -933,9 +1377,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>undefined</code>
+**Direct**: `await client.placesApi.placePhoto(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>undefined</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.placesApi.placePhoto(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;undefined, ApiError&gt;</code>, with `result.value` of type <code>undefined</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -946,7 +1398,7 @@ try {
 </details>
 
 <details>
-<summary><code>queryAutocomplete(request: PlacesApi.QueryAutocompleteRequest, options?: RequestOptions): ApiPromise&lt;PlacesQueryAutocompleteResponse, ResponseError&gt;</code></summary>
+<summary><code>queryAutocomplete(request: PlacesApi.QueryAutocompleteRequest, options?: RequestOptions): ApiPromise&lt;PlacesQueryAutocompleteResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -964,17 +1416,45 @@ The Query Autocomplete service allows you to add on-the-fly geographic query pre
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.placesApi.queryAutocomplete({ input, radius });
+  const response = await client.placesApi.queryAutocomplete({
+    input: "some example string",
+    radius: 1000,
+    offset: 3,
+    location: "40,-110",
+  });
   // TODO: Handle 'response' of type PlacesQueryAutocompleteResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.placesApi.queryAutocomplete({
+  input: "some example string",
+  radius: 1000,
+  offset: 3,
+  location: "40,-110",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type PlacesQueryAutocompleteResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -1002,9 +1482,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PlacesQueryAutocompleteResponse](src/models/places-query-autocomplete-response.ts)</code>
+**Direct**: `await client.placesApi.queryAutocomplete(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[PlacesQueryAutocompleteResponse](src/models/places-query-autocomplete-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.placesApi.queryAutocomplete(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;PlacesQueryAutocompleteResponse, ApiError&gt;</code>, with `result.value` of type <code>[PlacesQueryAutocompleteResponse](src/models/places-query-autocomplete-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -1015,7 +1503,7 @@ try {
 </details>
 
 <details>
-<summary><code>textSearch(request: PlacesApi.TextSearchRequest, options?: RequestOptions): ApiPromise&lt;PlacesTextSearchResponse, ResponseError&gt;</code></summary>
+<summary><code>textSearch(request: PlacesApi.TextSearchRequest, options?: RequestOptions): ApiPromise&lt;PlacesTextSearchResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -1035,17 +1523,43 @@ The search response will include a list of places. You can send a Place Details 
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.placesApi.textSearch({ query, radius });
+  const response = await client.placesApi.textSearch({
+    query: "restaurants in Sydney",
+    radius: 1000,
+    location: "40,-110",
+  });
   // TODO: Handle 'response' of type PlacesTextSearchResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.placesApi.textSearch({
+  query: "restaurants in Sydney",
+  radius: 1000,
+  location: "40,-110",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type PlacesTextSearchResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -1078,9 +1592,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[PlacesTextSearchResponse](src/models/places-text-search-response.ts)</code>
+**Direct**: `await client.placesApi.textSearch(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[PlacesTextSearchResponse](src/models/places-text-search-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.placesApi.textSearch(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;PlacesTextSearchResponse, ApiError&gt;</code>, with `result.value` of type <code>[PlacesTextSearchResponse](src/models/places-text-search-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -1095,7 +1617,7 @@ try {
 > Source: [StreetViewApi](src/resources/street-view-api.ts)
 
 <details>
-<summary><code>streetView(request: StreetViewApi.StreetViewRequest, options?: RequestOptions): ApiPromise&lt;undefined, ResponseError&gt;</code></summary>
+<summary><code>streetView(request: StreetViewApi.StreetViewRequest, options?: RequestOptions): ApiPromise&lt;undefined, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -1111,16 +1633,37 @@ The Street View Static API lets you embed a static (non-interactive) Street View
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  await client.streetViewApi.streetView({ size });
+  await client.streetViewApi.streetView({ size: "some example string", location: "40,-110" });
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.streetViewApi.streetView({
+  size: "some example string",
+  location: "40,-110",
+}).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: The call succeeded and resolves to no body
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -1153,9 +1696,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>undefined</code>
+**Direct**: `await client.streetViewApi.streetView(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>undefined</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.streetViewApi.streetView(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;undefined, ApiError&gt;</code>, with `result.value` of type <code>undefined</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>
@@ -1166,7 +1717,7 @@ try {
 </details>
 
 <details>
-<summary><code>streetViewMetadata(request: StreetViewApi.StreetViewMetadataRequest, options?: RequestOptions): ApiPromise&lt;StreetViewResponse, ResponseError&gt;</code></summary>
+<summary><code>streetViewMetadata(request: StreetViewApi.StreetViewMetadataRequest, options?: RequestOptions): ApiPromise&lt;StreetViewResponse, ApiError&gt;</code></summary>
 
 <dl>
 <dd>
@@ -1182,17 +1733,35 @@ The Street View Static API metadata requests provide data about Street View pano
 </dd>
 </dl>
 
-### Usage
+### Direct Usage
 
 <dl>
 <dd>
 
 ```ts
 try {
-  const response = await client.streetViewApi.streetViewMetadata();
+  const response = await client.streetViewApi.streetViewMetadata({ location: "40,-110" });
   // TODO: Handle 'response' of type StreetViewResponse
 } catch (err) {
-  // TODO: Handle 'err' of type ResponseError
+  // TODO: Handle 'err' of type ApiError, where 'err.payload' is always the Undeclared arm
+}
+```
+
+</dd>
+</dl>
+
+### Usage as ApiResult
+
+<dl>
+<dd>
+
+```ts
+const result = await client.streetViewApi.streetViewMetadata({ location: "40,-110" }).asApiResult();
+// TODO: Use 'result.status' and 'result.headers' to read the raw response status and headers
+if (result.ok) {
+  // TODO: Use 'result.value' of type StreetViewResponse
+} else {
+  // TODO: Handle 'result', where 'result.payload' is always the Undeclared arm
 }
 ```
 
@@ -1224,9 +1793,17 @@ try {
 <dl>
 <dd>
 
-**OnSuccess**: <code>[StreetViewResponse](src/models/street-view-response.ts)</code>
+**Direct**: `await client.streetViewApi.streetViewMetadata(request)`
 
-**OnError**: <code>[ResponseError](src/core/response-error.ts)</code>
+- **OnSuccess**: <code>[StreetViewResponse](src/models/street-view-response.ts)</code>
+- **OnError**: throws <code>[ApiError](src/core/api-error.ts)</code>, with `err.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm
+
+**As ApiResult**: `await client.streetViewApi.streetViewMetadata(request).asApiResult()`
+
+- **OnSuccess**: <code>[ApiResult](src/core/api-promise.ts)&lt;StreetViewResponse, ApiError&gt;</code>, with `result.value` of type <code>[StreetViewResponse](src/models/street-view-response.ts)</code>
+- **OnError**: `result.payload` always the <code>[Undeclared](src/core/api-error.ts)</code> arm, with `result.message`
+
+**Thrown**: <code>[GoogleMapsPlatformError](src/core/errors.ts)</code> on any operational failure — a caller abort and a programmer error stay outside the family and reach you raw
 
 </dd>
 </dl>

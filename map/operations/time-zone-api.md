@@ -4,16 +4,16 @@
 
 Accessor: `client.timeZoneApi` · Source: `src/resources/time-zone-api.ts` · 1 operation · Request types: namespace `TimeZoneApi`
 
-**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ResponseError` and the runtime error family are excluded — see sdk-map.md.
+**Type sources**: every type an operation names, with the file that declares it and the schema value exported beside it. Import every name from `google-maps-platform`; the `Source` path is where to **read** the shape, never what to import. `ApiError`, the runtime error family and the file vocabulary are excluded — see sdk-map.md.
 
 ### timezone
 
-- **Signature**: `timezone(request: TimeZoneApi.TimezoneRequest, options?: RequestOptions): ApiPromise<TimeZoneResponse, ResponseError>`
+- **Signature**: `timezone(request: TimeZoneApi.TimezoneRequest, options?: RequestOptions): ApiPromise<TimeZoneResponse, ApiError>`
 - **Wire**: `GET /maps/api/timezone/json`
 - **Auth**: `apiKeyAuth`
 - **Request body**: none — no `Content-Type` header is sent
 - **Returns**: `TimeZoneResponse`
-- **Error**: `ResponseError` — untyped, `payload.kind` always `"undeclared"`
+- **Error**: `GoogleMapsPlatformError` with `kind: "api"` — untyped, `payload.kind` always `"undeclared"`
 
 **Fields** — `TimeZoneApi.TimezoneRequest` (3):
 

@@ -20,12 +20,29 @@ export type DirectionsLeg = {
   distance?: Distance;
   duration?: Duration;
   durationInTraffic?: DurationInTraffic;
+  /**
+   * Contains the human-readable address (typically a street address) from reverse geocoding the
+   * `end_location` of this leg. This content is meant to be read as-is. Do not programmatically
+   * parse the formatted address.
+   */
   endAddress: string;
   endLocation: EndLocation;
+  /**
+   * Contains the human-readable address (typically a street address) resulting from reverse
+   * geocoding the `start_location` of this leg. This content is meant to be read as-is. Do not
+   * programmatically parse the formatted address.
+   */
   startAddress: string;
   startLocation: StartLocation;
+  /** An array of steps denoting information about each separate step of the leg of the journey. */
   steps: DirectionsStep[];
+  /**
+   * Information about traffic speed along the leg.
+   *
+   * @deprecated
+   */
   trafficSpeedEntry: DirectionsTrafficSpeedEntry[];
+  /** The locations of via waypoints along this leg. */
   viaWaypoint: DirectionsViaWaypoint[];
 };
 
